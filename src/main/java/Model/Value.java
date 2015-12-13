@@ -9,23 +9,23 @@ public class Value
         return ID;
     }
 
-    public void setID(int ID) {
+    public void SetID(int ID) {
         this.ID = ID;
     }
 
-    public String getName() {
+    public String GetName() {
         return Name;
     }
 
-    public void setName(String name) {
+    public void SetName(String name) {
         Name = name;
     }
 
-    public int getAttribut_ID() {
+    public int GetAttribut_ID() {
         return Attribut_ID;
     }
 
-    public void setAttribut_ID(int attribut_ID) {
+    public void SetAttribut_ID(int attribut_ID) {
         Attribut_ID = attribut_ID;
     }
 

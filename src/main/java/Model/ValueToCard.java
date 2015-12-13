@@ -9,23 +9,23 @@ public class ValueToCard
         return ID;
     }
 
-    public void setID(int ID) {
+    public void SetID(int ID) {
         this.ID = ID;
     }
 
-    public int getCard_ID() {
+    public int GetCard_ID() {
         return Card_ID;
     }
 
-    public void setCard_ID(int card_ID) {
+    public void SetCard_ID(int card_ID) {
         Card_ID = card_ID;
     }
 
-    public int getValue_ID() {
+    public int GetValue_ID() {
         return Value_ID;
     }
 
-    public void setValue_ID(int value_ID) {
+    public void SetValue_ID(int value_ID) {
         Value_ID = value_ID;
     }
 

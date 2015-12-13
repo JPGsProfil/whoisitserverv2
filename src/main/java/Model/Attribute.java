@@ -5,27 +5,27 @@ package Model;
  */
 public class Attribute
 {
-    public int getID() {
+    public int GetID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void SetID(int ID) {
         this.ID = ID;
     }
 
-    public String getName() {
+    public String GetName() {
         return Name;
     }
 
-    public void setName(String name) {
+    public void SetName(String name) {
         Name = name;
     }
 
-    public int getCardSet_ID() {
+    public int GetCardSet_ID() {
         return CardSet_ID;
     }
 
-    public void setCardSet_ID(int cardSet_ID) {
+    public void SetCardSet_ID(int cardSet_ID) {
         CardSet_ID = cardSet_ID;
     }
 
