@@ -18,11 +18,20 @@ public class CardRessource
 {
     @GET
     @Produces( MediaType.APPLICATION_JSON )
-    public Card getAsJson()
+    public Card GetCardAsJson()
     {
-        return new Card();
+        Card TestCard = new Card(1,1,"Klaus","1");
+        return TestCard;
     }
-
+    /*
+    @GET
+    @Produces( MediaType.APPLICATION_XML )
+    public Card GetCardAsXml()
+    {
+        Card TestCard = new Card(2,1,"Klaus","1");
+        return TestCard;
+    }*/
+/*
     @Path( "{Card_ID}" )
     public CardRessource getCard( @PathParam( "Card_ID" ) int Card_ID)
     {
@@ -38,5 +47,5 @@ public class CardRessource
         System.out.println( s );
         return Response.created( new URI( "http://server/Card/134" ) ).build();
     }
-
+*/
 }

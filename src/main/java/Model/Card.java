@@ -3,6 +3,9 @@ package Model;
 /**
  * Created by Jean on 11.12.2015.
  */
+
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class Card
 {
     public int GetID() {
