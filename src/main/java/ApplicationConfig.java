@@ -1,3 +1,5 @@
+import database.FirstTest;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -14,7 +16,8 @@ public class ApplicationConfig extends Application
     public Set<Class<?>> getClasses()
     {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add( FirstTest.class );
+        classes.add( database.FirstTest.class );
+        classes.add(database.Test_Hibernate.class);
         return super.getClasses();
     }
 }
