@@ -15,6 +15,18 @@ public class HibernateUtil
 {
     private static SessionFactory sessionFactory;
 
+
+
+    public static SessionFactory getSessionFactory()
+    {
+        if (sessionFactory == null)
+        {
+            sessionFactory = buildSessionFactory();
+        }
+        return sessionFactory;
+    }
+
+
     private static SessionFactory buildSessionFactory()
     {
         try
@@ -27,8 +39,8 @@ public class HibernateUtil
             ServiceRegistry serviceRegistry = null;
 
             serviceRegistry = new StandardServiceRegistryBuilder()
-                        .configure("hibernate.cfg.xml")
-                        .build();
+                    .configure("hibernate.cfg.xml")
+                    .build();
 
 
             Metadata Meta = new MetadataSources(serviceRegistry)
@@ -48,13 +60,5 @@ public class HibernateUtil
         }
     }
 
-    public static SessionFactory getSessionFactory()
-    {
-        if (sessionFactory == null)
-        {
-            sessionFactory = buildSessionFactory();
-        }
-        return sessionFactory;
-    }
 
 }

@@ -36,9 +36,10 @@ public class Test_Hibernate
         user1.setStrLastName("i");
         user1.setStrFirstName("Homer");
         testSessionFactory.save(user1);
+        String status = testSessionFactory.getStatistics().toString();
         testSessionFactory.getTransaction().commit();
         testSessionFactory.close();
-        return "succ";
+        return status;
     }
 
     @GET
