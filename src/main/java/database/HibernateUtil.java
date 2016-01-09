@@ -27,6 +27,7 @@ public class HibernateUtil
     }
 
 
+
     private static SessionFactory buildSessionFactory()
     {
         try
@@ -39,8 +40,8 @@ public class HibernateUtil
             ServiceRegistry serviceRegistry = null;
 
             serviceRegistry = new StandardServiceRegistryBuilder()
-                    .configure("hibernate.cfg.xml")
-                    .build();
+                        .configure("hibernate.cfg.xml")
+                        .build();
 
 
             Metadata Meta = new MetadataSources(serviceRegistry)
@@ -59,6 +60,5 @@ public class HibernateUtil
             throw new ExceptionInInitializerError(ex);
         }
     }
-
 
 }

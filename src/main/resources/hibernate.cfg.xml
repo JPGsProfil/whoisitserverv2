@@ -17,15 +17,15 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
 
-        <!-- Assume test is the database name-->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/demodb</property>
+        <!-- local db-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/isit</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-        <!-- Assume test is the database name
+        <!-- remote db
         <property name="hibernate.connection.url">jdbc:mysql://127.12.150.2:3306/isit</property>
         <property name="hibernate.connection.username">demouser</property>
         <property name="hibernate.connection.password">8e6FwRRHKdWe2Z35</property>-->
-        <!-- Assume test is the database name
+        <!-- Test db remote
         <property name="hibernate.connection.url">jdbc:mysql://127.12.150.2:3306/demodb</property>
         <property name="hibernate.connection.username">adminzyLqXxp</property>
         <property name="hibernate.connection.password">LVPCMCE6Hpem</property>-->
@@ -33,5 +33,7 @@
 
         <!-- List of class mapping files-->
         <mapping class="database.DB_User"/>
+        <mapping class="Model.Highscore"/>
+        <mapping class="Model.User"/>
     </session-factory>
 </hibernate-configuration>

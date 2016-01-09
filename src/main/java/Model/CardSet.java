@@ -7,38 +7,44 @@ public class CardSet
 {
 
     int ID;
-    String Name;
-    int User_ID;
+    String name;
+    int user_ID;
 
-    public int GetID() {
+    public int GetID()
+    {
         return ID;
     }
 
-    public void SetID(int ID) {
-        this.ID = ID;
-    }
-
-    public String GetName() {
-        return Name;
-    }
-
-    public void SetName(String name) {
-        Name = name;
-    }
-
-    public int GetUser_ID() {
-        return User_ID;
-    }
-
-    public void SetUser_ID(int user_ID) {
-        User_ID = user_ID;
-    }
-
-    public CardSet(int _ID, String _Name, int _User_ID)
+    public void SetID(int _ID)
     {
         this.ID = _ID;
-        this.Name = _Name;
-        this.User_ID = _User_ID;
+    }
+
+    public String GetName()
+    {
+        return name;
+    }
+
+    public void SetName(String _name)
+    {
+        name = _name;
+    }
+
+    public int GetUser_ID()
+    {
+        return user_ID;
+    }
+
+    public void SetUser_ID(int _user_ID)
+    {
+        user_ID = _user_ID;
+    }
+
+    public CardSet(int _ID, String _name, int _user_ID)
+    {
+        this.ID = _ID;
+        this.name = _name;
+        this.user_ID = _user_ID;
     }
 
 
