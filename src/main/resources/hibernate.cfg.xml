@@ -31,7 +31,9 @@
         <property name="hibernate.connection.password">LVPCMCE6Hpem</property>-->
 
 
-        <!-- List of class mapping files-->
+        <!-- List of class mapping files, JPG: used for hibernate querys-->
         <mapping class="Marshalling.dbAPI"/>
+        <mapping class="Model.User"/>
+        <mapping class="Model.Highscore"/>
     </session-factory>
 </hibernate-configuration>

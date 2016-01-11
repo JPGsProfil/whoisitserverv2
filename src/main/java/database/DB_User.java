@@ -16,7 +16,7 @@ public class DB_User
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from User where id is "+_id ).list();
+        List userList = session.createQuery( "from User U where U.id is "+_id ).list();
         transaction.commit();
         User user = (User) userList.get(0);
         return user;

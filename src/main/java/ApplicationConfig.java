@@ -11,14 +11,14 @@ import java.util.Set;
  * Created by Jean on 01.12.2015.
  */
 
-@ApplicationPath("Api")
+@ApplicationPath("api")
 public class ApplicationConfig extends Application
 {
     @Override
     public Set<Class<?>> getClasses()
     {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add( dbAPI.class );
+        classes.add( Marshalling.dbAPI.class );
         return super.getClasses();
     }
 }
