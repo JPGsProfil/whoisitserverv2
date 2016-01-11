@@ -32,7 +32,7 @@
 
 
         <!-- List of class mapping files-->
-        <mapping class="database.DB_User"/>
+        <mapping class="database.Test_DB_User"/>
         <mapping class="Model.Highscore"/>
         <mapping class="Model.User"/>
     </session-factory>

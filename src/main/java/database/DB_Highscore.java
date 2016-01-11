@@ -31,15 +31,8 @@ public class DB_Highscore
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction  = session.beginTransaction();
             System.out.println( "\nUser:" );
-            userList = session.createQuery( "from User" ).list();
+            userList = session.createQuery( "from Highscore" ).list();
 
-            for( int i=0; i<userList.size(); i++ )
-            {
-                User currentUser = (User) userList.get( i );
-                System.out.print( "Nutzer: "+ currentUser.getName());
-                System.out.println(   "        gewonnen: " + currentUser.getScore().getMatchesWon() );
-            }
-            System.out.println("Liste: "+userList);
             transaction.commit();
         } catch( HibernateException ex ) {
             if( transaction != null )

@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
  */
 
 @Path( "/card1" )
-public class FirstTest
+public class Test_FirstTest
 {
     @GET
     @Produces( MediaType.APPLICATION_JSON )

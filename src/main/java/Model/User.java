@@ -37,19 +37,19 @@ public class User
 
     @OneToOne(mappedBy="user", cascade=CascadeType.ALL)
     @JsonManagedReference
-    private Highscore score;
+    private Highscore highscore;
 
 
     //@Column(name = "id", table = "Highscore")
 
     public Highscore getScore()
     {
-        return score;
+        return highscore;
     }
 
     public void setScore(Highscore _score)
     {
-        score = _score;
+        highscore = _score;
     }
 
 
@@ -64,7 +64,7 @@ public class User
         email       = _email;
         name        = _name;
         password    = _password;
-        score       = _score;
+        highscore   = _score;
     }
 
 

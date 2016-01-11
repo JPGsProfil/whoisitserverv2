@@ -5,7 +5,6 @@ package database;
  */
 
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,8 +15,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 @Path( "/db" )
@@ -33,7 +30,7 @@ public class Test_Hibernate
     {
         Session testSessionFactory = HibernateUtil.getSessionFactory().openSession();
         testSessionFactory.beginTransaction();
-        DB_User user1 = new DB_User();
+        Test_DB_User user1 = new Test_DB_User();
         user1.setStrLastName("i");
         user1.setStrFirstName("Homer");
         testSessionFactory.save(user1);
@@ -54,10 +51,10 @@ public class Test_Hibernate
         Transaction currentTransaction = null;
         try{
             currentTransaction = currentSession.beginTransaction();
-            users = currentSession.createQuery("FROM DB_User").list();
+            users = currentSession.createQuery("FROM Test_DB_User").list();
             for (Iterator iterator =
                  users.iterator(); iterator.hasNext();){
-                DB_User currentUser = (DB_User) iterator.next();
+                Test_DB_User currentUser = (Test_DB_User) iterator.next();
                 System.out.print("First Name: " + currentUser.getStrFirstName());
                 System.out.println("  Last Name: " + currentUser.getStrLastName());
             }
@@ -114,7 +111,7 @@ public class Test_Hibernate
 
         Transaction t=session.beginTransaction();
 
-        DB_User newUser1 = new DB_User();
+        Test_DB_User newUser1 = new Test_DB_User();
         newUser.setStrFirstName("Benny");
         newUser.setStrLastName("Neugebauer");
 
