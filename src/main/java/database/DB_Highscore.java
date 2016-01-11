@@ -15,8 +15,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.Iterator;
 import java.util.List;
 
-
-@Path( "/db" )
+/*
+@Path( "/test" )
 public class DB_Highscore
 {
     @GET
@@ -56,3 +56,5 @@ public class DB_Highscore
 
 
 }
+
+*/

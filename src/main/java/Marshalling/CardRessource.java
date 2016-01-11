@@ -13,16 +13,16 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Path( "/card" )
+//@Path( "/card" )
 public class CardRessource
 {
-    @GET
-    @Produces( MediaType.APPLICATION_JSON )
-    public Card GetCardAsJson()
-    {
-        Card TestCard = new Card(1,1,"Klaus","1");
-        return TestCard;
-    }
+    //@GET
+    //@Produces( MediaType.APPLICATION_JSON )
+    //public Card GetCardAsJson()
+    //{
+    //    Card TestCard = new Card(1,1,"Klaus","1");
+    //    return TestCard;
+    //}
     /*
     @GET
     @Produces( MediaType.APPLICATION_XML )

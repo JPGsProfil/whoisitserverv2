@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by Jean on 01.12.2015.
  */
-
+/*
 @Path( "/card1" )
 public class Test_FirstTest
 {
@@ -104,3 +104,4 @@ public class Test_FirstTest
         return jsonTest;
     }
 }
+*/

@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import java.util.Iterator;
 import java.util.List;
 
-
-@Path( "/db" )
+/*
+@Path( "/test2" )
 public class Test_Hibernate
 {
     //private static final Logger LOGGER = Logger.getLogger("Hibernate-Tutorial");
@@ -146,5 +146,5 @@ public class Test_Hibernate
         {
             // rollback(transaction);
             System.out.println(e.getMessage());
-        }*/
-}
+        }
+}*/

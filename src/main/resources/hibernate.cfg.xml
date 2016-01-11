@@ -32,8 +32,6 @@
 
 
         <!-- List of class mapping files-->
-        <mapping class="database.Test_DB_User"/>
-        <mapping class="Model.Highscore"/>
-        <mapping class="Model.User"/>
+        <mapping class="Marshalling.dbAPI"/>
     </session-factory>
 </hibernate-configuration>

@@ -29,10 +29,6 @@ public class HibernateUtil
 
 
 
-
-
-
-
     private static SessionFactory buildSessionFactory()
     {
         try

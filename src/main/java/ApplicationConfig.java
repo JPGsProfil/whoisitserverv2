@@ -1,4 +1,6 @@
-import database.Test_FirstTest;
+
+
+import Marshalling.dbAPI;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -16,8 +18,7 @@ public class ApplicationConfig extends Application
     public Set<Class<?>> getClasses()
     {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add( Test_FirstTest.class );
-        classes.add(database.Test_Hibernate.class);
+        classes.add( dbAPI.class );
         return super.getClasses();
     }
 }
