@@ -19,7 +19,7 @@ public class dbAPI
     @Path( "user/{id}" )
     public User User(@PathParam("id") Integer _id)
     {
-        return database.DB_User.GetUserV2(_id);
+        return database.DB_User.GetUser(_id);
     }
 
 
