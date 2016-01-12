@@ -63,6 +63,8 @@ public class Highscore
 
     public Highscore()
     {
+        matchesWon = 0;
+        matchesLost = 0;
     }
 
 
