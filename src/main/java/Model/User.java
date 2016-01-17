@@ -49,9 +49,9 @@ public class User
 
 
 
-    public void setHighscore(Highscore _score)
+    public void setHighscore(List<Highscore> _score)
     {
-        highscore.add(_score);
+        highscore = _score;
     }
 
 
@@ -117,30 +117,4 @@ public class User
     {
         password = _password;
     }
-
-    /*
-    @Override
-    public String toString() {
-        Integer printId = id;
-        if (printId == null)
-        {
-            printId = 0;
-        }
-
-        /*Integer highscoreUser_id = highscore.getUser_ID();
-        if (highscoreUser_id == null)
-        {
-            printId = 0;
-        }
-
-        return "User{" +
-                "ID=" + printId +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", highscore id=" + highscore.getID() +
-                ", highscore won=" + highscore.getMatchesWon() +
-                ", highscore userid=" + highscoreUser_id +
-                '}';
-    }*/
 }

@@ -35,7 +35,8 @@ public class Highscore implements java.io.Serializable
     @Column(name="User_ID", unique=true, nullable=false)
     @GeneratedValue(generator="gen")
     @GenericGenerator(name="gen", strategy="foreign", parameters = @Parameter(name="property", value="user"))
-    Integer user_ID;*/
+    Integer user_ID;
+    */
 
 
     @ManyToOne
@@ -124,8 +125,6 @@ public class Highscore implements java.io.Serializable
     {
         this.matchesLost = _matchesLost;
     }
-
-
 
 
 
