@@ -12,6 +12,8 @@ import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 import java.util.Iterator;
@@ -33,6 +35,10 @@ public class HibernateUtil
     }
 
 
+
+
+
+
     /**
      * make db transaction
      * contains exception
@@ -40,7 +46,7 @@ public class HibernateUtil
      * @param _query sql query statement
      * @return list of objects, have to be cast
      */
-    public static List DBTransaction(String _query)
+    public static List dbTransaction(String _query)
     {
         List list = null;
         Session currentSession = HibernateUtil.getSessionFactory().openSession();
@@ -58,6 +64,35 @@ public class HibernateUtil
         return list;
 
     }
+
+
+    public static Response addToDB(Object _obj)
+    {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction currentTransaction = null;
+        try
+        {
+            currentTransaction = session.beginTransaction();
+            session.save(_obj);
+            currentTransaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            if (currentTransaction!=null) currentTransaction.rollback();
+            e.printStackTrace();
+            return Response.notModified().build();
+        }
+        finally
+        {
+            session.close();
+        }
+
+        return Response.ok().build();
+    }
+
+
+
 
 
 

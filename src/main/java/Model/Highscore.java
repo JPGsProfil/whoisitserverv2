@@ -1,12 +1,6 @@
 package Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -21,18 +15,13 @@ import org.hibernate.annotations.Parameter;
 //@Table(name="Highscore")
 @Entity
 @Table(name="Highscore")
-public class Highscore
+public class Highscore implements java.io.Serializable
 {
     //@Column(name="ID", nullable=false)
-    int ID;
-
-
-
     @Id
-    @Column(name="User_ID", unique=true, nullable=false)
-    @GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters = @Parameter(name="property", value="user"))
-    Integer user_ID;
+    @GeneratedValue
+    @Column(name="ID", nullable=false)
+    Integer id;
 
     @Column(name="MatchesWon", nullable=false)
     Integer matchesWon;
@@ -41,30 +30,52 @@ public class Highscore
     Integer matchesLost;
 
 
+    /*
+    @Id
+    @Column(name="User_ID", unique=true, nullable=false)
+    @GeneratedValue(generator="gen")
+    @GenericGenerator(name="gen", strategy="foreign", parameters = @Parameter(name="property", value="user"))
+    Integer user_ID;*/
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+
+    @ManyToOne
+    //@PrimaryKeyJoinColumn
     @JsonBackReference
+    @JoinColumn(name="User_ID", insertable=false, updatable=false, nullable=false)
     private User user;
 
 
 
-
+    /*
     public Integer getUser_ID()
     {
         return user_ID;
     }
 
-    public void setUser_ID(Integer user_ID) {
-        this.user_ID = user_ID;
+    public void setUser_ID(Integer _user_ID) {
+        this.user_ID = _user_ID;
     }
-
+*/
 
 
     public Highscore()
     {
+
+        //id = null;
+        //user_ID = null;
         matchesWon = 0;
         matchesLost = 0;
+        //user = new User();
+    }
+
+
+    public Highscore(User _user )
+    {
+        //id = null;
+        //user_ID = null;
+        matchesWon = 0;
+        matchesLost = 0;
+        user = _user;
     }
 
 
@@ -73,14 +84,14 @@ public class Highscore
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User _user) {
+        this.user = _user;
     }
 
 
 
-    public int getID() {
-        return ID;
+    public Integer getID() {
+        return id;
     }
 
 
@@ -95,9 +106,9 @@ public class Highscore
         return matchesLost;
     }
 
-    public void setID(int _ID)
+    public void setID(int _id)
     {
-        this.ID = _ID;
+        this.id = _id;
     }
 
 

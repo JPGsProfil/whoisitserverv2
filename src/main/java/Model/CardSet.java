@@ -10,32 +10,32 @@ public class CardSet
     String name;
     int user_ID;
 
-    public int GetID()
+    public int getID()
     {
         return ID;
     }
 
-    public void SetID(int _ID)
+    public void setID(int _ID)
     {
         this.ID = _ID;
     }
 
-    public String GetName()
+    public String getName()
     {
         return name;
     }
 
-    public void SetName(String _name)
+    public void setName(String _name)
     {
         name = _name;
     }
 
-    public int GetUser_ID()
+    public int getUser_ID()
     {
         return user_ID;
     }
 
-    public void SetUser_ID(int _user_ID)
+    public void setUser_ID(int _user_ID)
     {
         user_ID = _user_ID;
     }

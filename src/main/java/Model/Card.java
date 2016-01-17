@@ -4,42 +4,41 @@ package Model;
  * Created by Jean on 11.12.2015.
  */
 
-import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
+
 public class Card
 {
-    public int GetID() {
+    public int getID() {
         return ID;
     }
 
-    public void SetID(int ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
     int ID;
     int CardSet_ID;
 
-    public String GetName() {
+    public String getName() {
         return Name;
     }
 
-    public void SetName(String name) {
+    public void setName(String name) {
         Name = name;
     }
 
-    public String GetImage() {
+    public String getImage() {
         return Image;
     }
 
-    public void SetImage(String image) {
+    public void setImage(String image) {
         Image = image;
     }
 
-    public int GetCardSet_ID() {
+    public int getCardSet_ID() {
         return CardSet_ID;
     }
 
-    public void SetCardSet_ID(int cardSet_ID) {
+    public void setCardSet_ID(int cardSet_ID) {
         CardSet_ID = cardSet_ID;
     }
 

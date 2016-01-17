@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by Jean on 11.12.2015.
@@ -22,9 +22,9 @@ public class User
 
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private int ID;
+    @GeneratedValue//(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private Integer id;
 
     @Column(name = "Email")
     private String email;
@@ -35,21 +35,23 @@ public class User
     @Column(name = "Password")
     private String password;
 
-    @OneToOne(mappedBy="user", cascade=CascadeType.ALL)
-    @JsonManagedReference
-    private Highscore highscore;
-
-
-    //@Column(name = "id", table = "Highscore")
-
-    public Highscore getScore()
+    public List<Highscore> getHighscore()
     {
         return highscore;
     }
 
-    public void setScore(Highscore _score)
+    @OneToMany(mappedBy="user",fetch = FetchType.EAGER, cascade={CascadeType.ALL})
+    @JsonManagedReference
+    private List<Highscore> highscore;
+
+
+    //@Column(name = "id", table = "Highscore")
+
+
+
+    public void setHighscore(Highscore _score)
     {
-        highscore = _score;
+        highscore.add(_score);
     }
 
 
@@ -58,20 +60,20 @@ public class User
 
     }
 
-    public User(int _ID, String _email, String _name, String _password, Highscore _score)
+    public User(String _email, String _name, String _password)
     {
-        this.ID     = _ID;
+        //this.id     = _id;
         email       = _email;
         name        = _name;
         password    = _password;
-        highscore   = _score;
+        //highscore   = _score;
     }
 
 
 
-    public int getID()
+    public Integer getID()
     {
-        return ID;
+        return id;
     }
 
 
@@ -93,9 +95,9 @@ public class User
 
 
 
-    public void setID(int _ID)
+    public void setID(Integer _id)
     {
-        this.ID = ID;
+        this.id = _id;
     }
 
 
@@ -116,6 +118,29 @@ public class User
         password = _password;
     }
 
+    /*
+    @Override
+    public String toString() {
+        Integer printId = id;
+        if (printId == null)
+        {
+            printId = 0;
+        }
 
+        /*Integer highscoreUser_id = highscore.getUser_ID();
+        if (highscoreUser_id == null)
+        {
+            printId = 0;
+        }
 
+        return "User{" +
+                "ID=" + printId +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", highscore id=" + highscore.getID() +
+                ", highscore won=" + highscore.getMatchesWon() +
+                ", highscore userid=" + highscoreUser_id +
+                '}';
+    }*/
 }

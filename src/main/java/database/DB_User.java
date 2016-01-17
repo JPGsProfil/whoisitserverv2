@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DB_User
 {
-    public static User GetUser(Integer _id)
+    public static User getUser(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -33,17 +33,51 @@ public class DB_User
     }*/
 
 
-    public Response testwrite2()
+    public static Response addUser(User _user)
+    {
+        // save user
+        HibernateUtil.addToDB(_user);
+        // save highscore -> user is needed for highscore
+        Highscore score = new Highscore(_user);
+        return HibernateUtil.addToDB(score);
+
+
+        /*
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction currentTransaction = null;
+        try
+        {
+            currentTransaction = session.beginTransaction();
+            session.save(_user);
+            currentTransaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            if (currentTransaction!=null) currentTransaction.rollback();
+            e.printStackTrace();
+            return Response.notModified().build();
+        }
+        finally
+        {
+            session.close();
+        }
+
+        return Response.ok().build();*/
+    }
+
+
+    public static Response testwrite2()
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        User user1 = new User();
-        Highscore score = new Highscore();
-        user1.setName("a");
-        user1.setPassword("Homer");
-        user1.setScore(score);
+
+        User user1 = new User("ja@ja.de","er","pwd");
         session.save(user1);
-        String status = session.getStatistics().toString();
+
+        Highscore score = new Highscore();
+        score.setUser(user1);
+        session.save(score);
+
         session.getTransaction().commit();
         session.close();
 
