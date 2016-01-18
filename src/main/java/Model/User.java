@@ -35,24 +35,24 @@ public class User
     @Column(name = "Password")
     private String password;
 
-    public List<Highscore> getHighscore()
-    {
-        return highscore;
-    }
 
+    /*
     @OneToMany(mappedBy="user",fetch = FetchType.EAGER, cascade={CascadeType.ALL})
     @JsonManagedReference
     private List<Highscore> highscore;
 
 
-    //@Column(name = "id", table = "Highscore")
+    public List<Highscore> getHighscore()
+    {
+        return highscore;
+    }
 
 
 
     public void setHighscore(List<Highscore> _score)
     {
         highscore = _score;
-    }
+    }*/
 
 
     public User()
