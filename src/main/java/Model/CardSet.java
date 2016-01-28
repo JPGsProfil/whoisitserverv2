@@ -6,46 +6,33 @@ package Model;
 public class CardSet
 {
 
-    int ID;
-    String name;
-    int user_ID;
-
-    public int getID()
-    {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int _ID)
-    {
-        this.ID = _ID;
-    }
-
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String _name)
-    {
-        name = _name;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getUser_ID()
-    {
-        return user_ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUser_ID(int _user_ID)
-    {
-        user_ID = _user_ID;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public CardSet(int _ID, String _name, int _user_ID)
-    {
-        this.ID = _ID;
-        this.name = _name;
-        this.user_ID = _user_ID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
+
+    int id;
+    String name;
+    int userId;
 
 
 }

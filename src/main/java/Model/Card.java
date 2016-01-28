@@ -7,50 +7,54 @@ package Model;
 
 public class Card
 {
-    public int getID() {
-        return ID;
+
+    public int getCardSetId() {
+        return cardSetId;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    int ID;
-    int CardSet_ID;
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
+    public int getId() {
+        return id;
     }
 
     public String getImage() {
-        return Image;
+        return image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setCardSetId(int cardSetId) {
+        this.cardSetId = cardSetId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
-    public int getCardSet_ID() {
-        return CardSet_ID;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCardSet_ID(int cardSet_ID) {
-        CardSet_ID = cardSet_ID;
-    }
+    int id;
+    int cardSetId;
+    String name;
+    String image;
 
-    String Name;
-    String Image;
 
-    public Card(int _ID, int _CardSet_ID, String _Name, String _Image)
+
+
+
+
+    public Card(int _id, int _cardSetId, String _name, String _image)
     {
-        this.ID = _ID;
-        this.CardSet_ID = _CardSet_ID;
-        this.Name = _Name;
-        this.Image = _Image;
+        this.id = _id;
+        this.cardSetId = _cardSetId;
+        this.name = _name;
+        this.image = _image;
     }
-
 }

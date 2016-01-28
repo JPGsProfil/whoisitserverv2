@@ -5,31 +5,38 @@ package Model;
  */
 public class Value
 {
-    public int getID() {
-        return ID;
+
+    public int getAttributeId() {
+        return attributeId;
     }
 
-    public void setID(int _ID) {
-        this.ID = _ID;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String _name) {
-        Name = _name;
+    public void setAttributeId(int attributeId) {
+        this.attributeId = attributeId;
     }
 
-    public int getAttribut_ID() {
-        return Attribut_ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setAttribut_ID(int _attribut_ID) {
-        Attribut_ID = _attribut_ID;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    int ID;
-    String Name;
-    int Attribut_ID;
+    public Value(int attributeId, int id, String name) {
+        this.attributeId = attributeId;
+        this.id = id;
+        this.name = name;
+    }
+
+    int id;
+    String name;
+    int attributeId;
 }

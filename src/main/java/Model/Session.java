@@ -5,10 +5,58 @@ package Model;
  */
 public class Session
 {
-    int ID;
-    int Player1_ID;
-    int Player2_ID;
-    int Cardset_ID;
-    boolean HasStarted;
-    boolean HasEnded;
+    public int getCardset_ID() {
+        return cardset_ID;
+    }
+
+    public boolean isHasEnded() {
+        return hasEnded;
+    }
+
+    public boolean isHasStarted() {
+        return hasStarted;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPlayer1_ID() {
+        return player1_ID;
+    }
+
+    public int getPlayer2_ID() {
+        return player2_ID;
+    }
+
+    public void setCardset_ID(int cardsetId) {
+        this.cardsetId = cardsetId;
+    }
+
+    public void setHasEnded(boolean hasEnded) {
+        this.hasEnded = hasEnded;
+    }
+
+    public void setHasStarted(boolean hasStarted) {
+        this.hasStarted = hasStarted;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPlayer1_ID(int player1_ID) {
+        this.player1_ID = player1_ID;
+    }
+
+    public void setPlayer2_ID(int player2_ID) {
+        this.player2_ID = player2_ID;
+    }
+
+    int id;
+    int player1_ID;
+    int player2_ID;
+    int cardsetId;
+    boolean hasStarted;
+    boolean hasEnded;
 }

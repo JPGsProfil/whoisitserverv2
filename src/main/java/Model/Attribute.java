@@ -5,31 +5,38 @@ package Model;
  */
 public class Attribute
 {
-    public int GetID() {
-        return ID;
+
+    public int getCardSetId() {
+        return cardSetId;
     }
 
-    public void SetID(int ID) {
-        this.ID = ID;
+    public int getId() {
+        return id;
     }
 
-    public String GetName() {
-        return Name;
+    public String getName() {
+        return name;
     }
 
-    public void SetName(String name) {
-        Name = name;
+    public void setCardSetId(int cardSetId) {
+        this.cardSetId = cardSetId;
     }
 
-    public int GetCardSet_ID() {
-        return CardSet_ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void SetCardSet_ID(int cardSet_ID) {
-        CardSet_ID = cardSet_ID;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    int ID;
-    String Name;
-    int CardSet_ID;
+    public Attribute(int cardSetId, int id, String name) {
+        this.cardSetId = cardSetId;
+        this.id = id;
+        this.name = name;
+    }
+
+    int id;
+    String name;
+    int cardSetId;
 }

@@ -5,31 +5,39 @@ package Model;
  */
 public class ValueToCard
 {
-    public int getID() {
-        return ID;
+
+
+    public int getCardId() {
+        return cardId;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public int getId() {
+        return id;
     }
 
-    public int getCard_ID() {
-        return Card_ID;
+    public int getValueId() {
+        return valueId;
     }
 
-    public void setCard_ID(int card_ID) {
-        Card_ID = card_ID;
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
     }
 
-    public int getValue_ID() {
-        return Value_ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setValue_ID(int value_ID) {
-        Value_ID = value_ID;
+    public void setValueId(int valueId) {
+        this.valueId = valueId;
     }
 
-    int ID;
-    int Card_ID;
-    int Value_ID;
+    public ValueToCard(int cardId, int id, int valueId) {
+        this.cardId = cardId;
+        this.id = id;
+        this.valueId = valueId;
+    }
+
+    int id;
+    int cardId;
+    int valueId;
 }
