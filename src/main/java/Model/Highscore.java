@@ -17,47 +17,64 @@ import org.hibernate.annotations.Parameter;
 @Table(name="Highscore")
 public class Highscore implements java.io.Serializable
 {
-    //@Column(name="ID", nullable=false)
+
+
+
     @Id
     @GeneratedValue
     @Column(name="ID", nullable=false)
-    Integer id;
-
-    @Column(name="MatchesWon", nullable=false)
-    Integer matchesWon;
-
-    @Column(name="MatchesLost", nullable=false)
-    Integer matchesLost;
-
-
-    /*
-    @Id
-    @Column(name="User_ID", unique=true, nullable=false)
-    @GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters = @Parameter(name="property", value="user"))
-    Integer user_ID;
-    */
-
+    public Integer getId()
+    {
+        return id;
+    }
 
     @ManyToOne
     //@PrimaryKeyJoinColumn
     @JsonBackReference
     @JoinColumn(name="User_ID", insertable=false, updatable=false, nullable=false)
-    private User user;
+    public User getUser() {
+        return user;
+    }
 
 
-
-    /*
-    public Integer getUser_ID()
+    @Column(name="MatchesWon", nullable=false)
+    public Integer getMatchesWon()
     {
-        return user_ID;
+        return matchesWon;
     }
 
-    public void setUser_ID(Integer _user_ID) {
-        this.user_ID = _user_ID;
-    }
-*/
 
+    @Column(name="MatchesLost", nullable=false)
+    public Integer getMatchesLost()
+    {
+        return matchesLost;
+    }
+
+
+
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
+
+    public void setUser(User _user)
+    {
+        this.user = _user;
+    }
+
+
+
+    public void setMatchesWon(Integer _matchesWon)
+    {
+        this.matchesWon = _matchesWon;
+    }
+
+
+
+    public void setMatchesLost(Integer _matchesLost)
+    {
+        this.matchesLost = _matchesLost;
+    }
 
     public Highscore()
     {
@@ -81,50 +98,31 @@ public class Highscore implements java.io.Serializable
 
 
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User _user) {
-        this.user = _user;
-    }
+    private Integer id;
+    private User user;
+    private Integer matchesWon;
+    private Integer matchesLost;
 
 
 
-    public Integer getID() {
-        return id;
-    }
-
-
-    public Integer getMatchesWon()
+    /*
+    public Integer getUser_ID()
     {
-        return matchesWon;
+        return user_ID;
     }
 
-
-    public Integer getMatchesLost()
-    {
-        return matchesLost;
+    public void setUser_ID(Integer _user_ID) {
+        this.user_ID = _user_ID;
     }
+*/
 
-    public void setID(int _id)
-    {
-        this.id = _id;
-    }
-
-
-
-    public void setMatchesWon(Integer _matchesWon)
-    {
-        this.matchesWon = _matchesWon;
-    }
-
-
-
-    public void setMatchesLost(Integer _matchesLost)
-    {
-        this.matchesLost = _matchesLost;
-    }
+    /*
+    @Id
+    @Column(name="User_ID", unique=true, nullable=false)
+    @GeneratedValue(generator="gen")
+    @GenericGenerator(name="gen", strategy="foreign", parameters = @Parameter(name="property", value="user"))
+    Integer user_ID;
+    */
 
 
 

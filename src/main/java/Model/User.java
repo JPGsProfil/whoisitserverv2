@@ -19,20 +19,60 @@ import java.util.List;
 public class User
 {
 
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @GeneratedValue//(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private Integer id;
+    public Integer getID()
+    {
+        return id;
+    }
+
 
     @Column(name = "Email")
-    private String email;
+    public String getEmail()
+    {
+        return email;
+    }
+
 
     @Column(name = "Name")
-    private String name;
+    public String getName()
+    {
+        return name;
+    }
+
+
 
     @Column(name = "Password")
-    private String password;
+    public String getPassword()
+    {
+        return password;
+    }
+
+
+
+    public void setID(Integer _id)
+    {
+        this.id = _id;
+    }
+
+
+    public void setEmail(String _email)
+    {
+        email = _email;
+    }
+
+
+    public void setName(String _name)
+    {
+        name = _name;
+    }
+
+
+    public void setPassword(String _password)
+    {
+        password = _password;
+    }
 
 
     /*
@@ -69,51 +109,9 @@ public class User
     }
 
 
+    private Integer id;
+    private String email;
+    private String name;
+    private String password;
 
-    public Integer getID()
-    {
-        return id;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-
-
-    public String getPassword()
-    {
-        return password;
-    }
-
-
-
-    public void setID(Integer _id)
-    {
-        this.id = _id;
-    }
-
-
-    public void setEmail(String _email)
-    {
-        email = _email;
-    }
-
-
-    public void setName(String _name)
-    {
-        name = _name;
-    }
-
-
-    public void setPassword(String _password)
-    {
-        password = _password;
-    }
 }
