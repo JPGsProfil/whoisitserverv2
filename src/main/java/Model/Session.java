@@ -6,7 +6,7 @@ package Model;
 public class Session
 {
     public int getCardset_ID() {
-        return cardset_ID;
+        return cardsetId;
     }
 
     public boolean isHasEnded() {

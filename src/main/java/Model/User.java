@@ -15,7 +15,6 @@ import java.util.List;
 
 
 @Entity
-//@SequenceGenerator(name="ID", initialValue = 1, allocationSize = 1)
 @Table(name = "User")
 public class User
 {

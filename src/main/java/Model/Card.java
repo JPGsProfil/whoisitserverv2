@@ -1,42 +1,61 @@
 package Model;
 
+import javax.persistence.*;
+
 /**
  * Created by Jean on 11.12.2015.
  */
 
-
+@Entity
+@Table(name = "Card")
 public class Card
 {
 
-    public int getCardSetId() {
-        return cardSetId;
-    }
 
-    public int getId() {
+
+    @Id
+    @GeneratedValue//(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    public int getId()
+    {
         return id;
     }
 
-    public String getImage() {
+    @Column(name = "Cardset_ID")
+    public int getCardSetId()
+    {
+        return cardSetId;
+    }
+
+    @Column(name = "Image")
+    public String getImage()
+    {
         return image;
     }
 
-    public String getName() {
+    @Column(name = "Name")
+    public String getName()
+    {
         return name;
     }
 
-    public void setCardSetId(int cardSetId) {
+    public void setCardSetId(int cardSetId)
+    {
         this.cardSetId = cardSetId;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setImage(String image) {
+    public void setImage(String image)
+    {
         this.image = image;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
