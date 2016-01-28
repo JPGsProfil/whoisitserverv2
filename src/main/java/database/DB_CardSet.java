@@ -1,9 +1,12 @@
 package database;
 
 import Model.CardSet;
+import Model.Highscore;
+import Model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -20,5 +23,12 @@ public class DB_CardSet
         transaction.commit();
         CardSet cardSet = (CardSet) cardList.get(0);
         return cardSet;
+    }
+
+
+    public static Response addCardSet(CardSet _cardSet)
+    {
+        return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
+
     }
 }

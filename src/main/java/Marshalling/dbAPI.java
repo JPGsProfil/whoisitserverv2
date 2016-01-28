@@ -29,7 +29,7 @@ public class dbAPI
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user/add" )
+    @Path( "user/new" )
     public Response UserAdd( User _user)
     {
         System.out.println("bin in AddUser: ");
@@ -66,6 +66,19 @@ public class dbAPI
     {
         return database.DB_CardSet.getCardSet(_id);
     }
+
+
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "cardset/new" )
+    public Response addCardSet( CardSet _cardSet)
+    {
+        return database.DB_CardSet.addCardSet(_cardSet);
+    }
+
+
 
 
 
