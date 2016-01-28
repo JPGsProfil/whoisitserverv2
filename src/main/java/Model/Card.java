@@ -1,5 +1,7 @@
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -10,8 +12,6 @@ import javax.persistence.*;
 @Table(name = "Card")
 public class Card
 {
-
-
 
     @Id
     @GeneratedValue//(strategy = GenerationType.AUTO)
@@ -59,16 +59,6 @@ public class Card
         this.name = name;
     }
 
-    int id;
-    int cardSetId;
-    String name;
-    String image;
-
-
-
-
-
-
     public Card(int _id, int _cardSetId, String _name, String _image)
     {
         this.id = _id;
@@ -76,4 +66,33 @@ public class Card
         this.name = _name;
         this.image = _image;
     }
+
+    public Card()
+    {
+
+    }
+
+
+
+    int id;
+    int cardSetId;
+    String name;
+    String image;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn (name = "Cardset_ID", referencedColumnName = "ID", nullable = false, updatable = false, insertable = false)
+    public CardSet getCardSet()
+    {
+        return cardSet;
+    }
+
+    public void setCardSet(CardSet cardSet)
+    {
+        this.cardSet = cardSet;
+    }
+
+    CardSet cardSet;
+
+
 }

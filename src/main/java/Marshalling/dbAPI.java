@@ -1,5 +1,6 @@
 package Marshalling;
 
+import Model.CardSet;
 import Model.Highscore;
 import Model.User;
 
@@ -56,6 +57,19 @@ public class dbAPI
 
         return database.DB_User.testwrite2();
     }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "cardset/{id}" )
+    public CardSet getCardSet(@PathParam("id") Integer _id)
+    {
+        return database.DB_CardSet.getCardSet(_id);
+    }
+
+
+
+
 
 
 
