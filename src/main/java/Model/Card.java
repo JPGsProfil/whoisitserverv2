@@ -10,22 +10,19 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Card")
+//@Entity(name = "Card")
+//@Table(name="Card", uniqueConstraints={@UniqueConstraint(columnNames = {"ID"})})
 public class Card
 {
 
     @Id
     @GeneratedValue//(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
 
-    @Column(name = "Cardset_ID")
-    public int getCardSetId()
-    {
-        return cardSetId;
-    }
 
     @Column(name = "Image")
     public String getImage()
@@ -39,12 +36,20 @@ public class Card
         return name;
     }
 
-    public void setCardSetId(int cardSetId)
+    @ManyToOne
+    @JoinColumn (name = "Cardset_ID",referencedColumnName = "ID")
+    public CardSet getCardSet()
     {
-        this.cardSetId = cardSetId;
+        return cardSet;
     }
 
-    public void setId(int id)
+    public void setCardSet(CardSet cardSet)
+    {
+        this.cardSet = cardSet;
+    }
+
+
+    public void setId(Integer id)
     {
         this.id = id;
     }
@@ -59,12 +64,20 @@ public class Card
         this.name = name;
     }
 
-    public Card(int _id, int _cardSetId, String _name, String _image)
+    public Card(Integer _id, String _name, String _image)
     {
         this.id = _id;
-        this.cardSetId = _cardSetId;
         this.name = _name;
         this.image = _image;
+        this.cardSet = null;
+    }
+
+    public Card(Integer _id, String _name, String _image, CardSet _cardSet)
+    {
+        this.id = _id;
+        this.name = _name;
+        this.image = _image;
+        this.cardSet = _cardSet;
     }
 
     public Card()
@@ -74,23 +87,9 @@ public class Card
 
 
 
-    int id;
-    int cardSetId;
+    Integer id;
     String name;
     String image;
-
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn (name = "Cardset_ID", referencedColumnName = "ID", nullable = false, updatable = false, insertable = false)
-    public CardSet getCardSet()
-    {
-        return cardSet;
-    }
-
-    public void setCardSet(CardSet cardSet)
-    {
-        this.cardSet = cardSet;
-    }
 
     CardSet cardSet;
 

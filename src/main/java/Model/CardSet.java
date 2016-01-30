@@ -18,7 +18,7 @@ public class CardSet implements java.io.Serializable
     @Id
     @GeneratedValue//(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
@@ -30,7 +30,7 @@ public class CardSet implements java.io.Serializable
     }
 
     @Column(name = "User_ID")
-    public int getUserId()
+    public Integer getUserId()
     {
         return userId;
     }
@@ -41,7 +41,7 @@ public class CardSet implements java.io.Serializable
 
 
 
-    public void setId(int _id)
+    public void setId(Integer _id)
     {
         this.id = _id;
     }
@@ -51,7 +51,7 @@ public class CardSet implements java.io.Serializable
         this.name = _name;
     }
 
-    public void setUserId(int _userId)
+    public void setUserId(Integer _userId)
     {
         this.userId = _userId;
     }
@@ -60,7 +60,14 @@ public class CardSet implements java.io.Serializable
     {
     }
 
-    public CardSet(int _id, String _name, int _userId, List<Card> _cards)
+    public CardSet(Integer _id, String _name, Integer _userId)
+    {
+        this.id = _id;
+        this.name = _name;
+        this.userId = _userId;
+    }
+
+    public CardSet(Integer _id, String _name, Integer _userId, List<Card> _cards)
     {
         this.id = _id;
         this.name = _name;
@@ -83,9 +90,9 @@ public class CardSet implements java.io.Serializable
 
 
 
-    private int id;
+    private Integer id;
     private String name;
-    private int userId;
+    private Integer userId;
     private List<Card> cards;
 
 

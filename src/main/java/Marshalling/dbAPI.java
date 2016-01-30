@@ -1,5 +1,6 @@
 package Marshalling;
 
+import Model.Card;
 import Model.CardSet;
 import Model.Highscore;
 import Model.User;
@@ -15,6 +16,8 @@ import java.util.List;
 @Path("/db")
 public class dbAPI
 {
+    ///////////////////////////
+    /////// User
 
     //@_POST
     @GET
@@ -59,6 +62,10 @@ public class dbAPI
     }
 
 
+
+    ///////////////////////////
+    /////// Cardset
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/{id}" )
@@ -79,9 +86,54 @@ public class dbAPI
     }
 
 
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "cardset/new/test" )
+    public Response addCardSetTest()
+    {
+        return database.DB_CardSet.addCardSetTest();
+    }
 
 
 
+    ///////////////////////////
+    /////// Card
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "card/single/{id}" )
+    public Card getCard(@PathParam("id") Integer _id)
+    {
+        return database.DB_Card.getCard(_id);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "card/multiple/{cardSetId}" )
+    public List<Card> getCards(@PathParam("cardSetId") Integer _cardSetId)
+    {
+        return database.DB_Card.getCards(_cardSetId);
+    }
+
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "card/new/single" )
+    public Response addCard( Card _card)
+    {
+        return database.DB_Card.addCard(_card);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "card/new/multiple" )
+    public Response addCards( List<Card> _cardList)
+    {
+        return database.DB_Card.addCards(_cardList);
+    }
 
 
 
