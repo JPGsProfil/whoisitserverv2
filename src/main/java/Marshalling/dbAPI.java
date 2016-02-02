@@ -28,7 +28,7 @@ public class dbAPI
         return database.DB_User.getUser(_id);
     }
 
-
+    /*
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,7 +37,7 @@ public class dbAPI
     {
         return database.DB_User.getUserByIdAndPwd(_username, _password);
     }
-
+    */
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
