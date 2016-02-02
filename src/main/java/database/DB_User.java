@@ -4,9 +4,13 @@ import Marshalling.Login;
 import Marshalling.LoginResult;
 import Model.Highscore;
 import Model.User;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.boot.model.relational.Namespace;
+import org.hibernate.criterion.Restrictions;
+
 import javax.ws.rs.core.Response;
 
 import java.util.List;
@@ -30,7 +34,11 @@ public class DB_User
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from User U where U.name is "+_login.getName() + " and U.password is "+_login.getPassword() ).list();
+        Criteria cr = session.createCriteria(User.class);
+        cr.add(Restrictions.eq("name", _login.getName() ));
+        cr.add(Restrictions.eq("password", _login.getPassword() ));
+        List userList = cr.list();
+
         transaction.commit();
         LoginResult result = new LoginResult("accepted");
         if(userList.isEmpty())

@@ -34,7 +34,21 @@ public class dbAPI
     @Path( "user/namepassword" )
     public LoginResult doesUserWithNameAndPasswordExist( Login _user)
     {
+        System.out.println("Bin in doesUserWithNameAndPasswordExist");
+        System.out.println("user name "+_user.getName());
         return database.DB_User.doesUserWithNameAndPasswordExist(_user);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user/loginexample" )
+    public Login getLoginExample()
+    {
+        Login testlogin = new Login();
+        testlogin.setName("ja");
+        testlogin.setPassword("ja");
+        return testlogin;
+
     }
 
 
