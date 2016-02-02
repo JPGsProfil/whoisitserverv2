@@ -43,7 +43,7 @@ public class DB_User
         LoginResult result = new LoginResult("accepted");
         if(userList.isEmpty())
         {
-            result.setResult("denied");
+            result.setResult("not accepted");
         }
         return result;
     }
