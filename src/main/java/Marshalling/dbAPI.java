@@ -23,10 +23,20 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/{id}" )
-    public User GetUserById(@PathParam("id") Integer _id)
+    public User getUserById(@PathParam("id") Integer _id)
     {
         return database.DB_User.getUser(_id);
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user/namepassword" )
+    public LoginResult doesUserWithNameAndPasswordExist( Login _user)
+    {
+        return database.DB_User.doesUserWithNameAndPasswordExist(_user);
+    }
+
 
     /*
     @POST
@@ -43,7 +53,7 @@ public class dbAPI
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/new" )
-    public Response AddUser( User _user)
+    public Response addUser( User _user)
     {
         System.out.println("bin in AddUser: ");
         System.out.println("Name: " + _user.getName());
@@ -54,7 +64,7 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/addgettest" )
-    public Response AddUserPerGetTest()
+    public Response addUserPerGetTest()
     {
         Highscore score = new Highscore();
         User testUser = new User("test@test.de", "Er", "321");
@@ -65,7 +75,7 @@ public class dbAPI
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/addposttest" )
-    public Response AddUserByPostTest()
+    public Response addUserByPostTest()
     {
         return database.DB_User.testwrite2();
     }

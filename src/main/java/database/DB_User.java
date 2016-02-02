@@ -1,5 +1,7 @@
 package database;
 
+import Marshalling.Login;
+import Marshalling.LoginResult;
 import Model.Highscore;
 import Model.User;
 import org.hibernate.HibernateException;
@@ -24,14 +26,18 @@ public class DB_User
         return user;
     }
 
-    public static User getUserByIdAndPwd(String _username, String _password)
+    public static LoginResult doesUserWithNameAndPasswordExist(Login _login)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from User U where U.name is "+_username + " and U.password is "+_password ).list();
+        List userList = session.createQuery( "from User U where U.name is "+_login.getName() + " and U.password is "+_login.getPassword() ).list();
         transaction.commit();
-        User user = (User) userList.get(0);
-        return user;
+        LoginResult result = new LoginResult("accepted");
+        if(userList.isEmpty())
+        {
+            result.setResult("denied");
+        }
+        return result;
     }
     /*
     public static User GetUserV2(Integer _id)
