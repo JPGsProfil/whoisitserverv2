@@ -23,6 +23,16 @@ public class DB_User
         User user = (User) userList.get(0);
         return user;
     }
+
+    public static User getUserByIdAndPwd(String _username, String _password)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        List userList = session.createQuery( "from User U where U.name is "+_username + " and U.password is "+_password ).list();
+        transaction.commit();
+        User user = (User) userList.get(0);
+        return user;
+    }
     /*
     public static User GetUserV2(Integer _id)
     {

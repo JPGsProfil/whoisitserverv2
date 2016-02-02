@@ -37,6 +37,7 @@ public class Card
     }
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn (name = "Cardset_ID",referencedColumnName = "ID")
     public CardSet getCardSet()
     {
