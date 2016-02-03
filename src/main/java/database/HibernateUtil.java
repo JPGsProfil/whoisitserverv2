@@ -14,6 +14,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 import java.util.List;
 
 import java.util.Iterator;
@@ -89,6 +90,17 @@ public class HibernateUtil
         }
 
         return Response.ok().build();
+    }
+
+
+    public static boolean deleteById(Class<?> type, Serializable id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Object persistentInstance = session.load(type, id);
+        if (persistentInstance != null) {
+            session.delete(persistentInstance);
+            return true;
+        }
+        return false;
     }
 
 

@@ -30,7 +30,13 @@ public class DB_User
         return user;
     }
 
-    public static LoginResult doesUserWithNameAndPasswordExist(Login _login)
+    public static boolean deleteUser(Integer _id)
+    {
+        User user = DB_User.getUser(_id);
+        return  HibernateUtil.deleteById(User.class, _id);
+    }
+
+    public static User doesUserWithNameAndPasswordExist(Login _login)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -38,14 +44,14 @@ public class DB_User
         cr.add(Restrictions.eq("name", _login.getName() ));
         cr.add(Restrictions.eq("password", _login.getPassword() ));
         List userList = cr.list();
-
+        User user = new User(new Integer(-1));
         transaction.commit();
         LoginResult result = new LoginResult("accepted");
-        if(userList.isEmpty())
+        if(!userList.isEmpty())
         {
-            result.setResult("not accepted");
+            user = (User) userList.get(0);
         }
-        return result;
+        return user;
     }
     /*
     public static User GetUserV2(Integer _id)

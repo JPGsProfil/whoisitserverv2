@@ -28,11 +28,20 @@ public class dbAPI
         return database.DB_User.getUser(_id);
     }
 
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user/{id}" )
+    public boolean deleteUserById(@PathParam("id") Integer _id)
+    {
+        return database.DB_User.deleteUser(_id);
+    }
+
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/namepassword" )
-    public LoginResult doesUserWithNameAndPasswordExist( Login _user)
+    public User doesUserWithNameAndPasswordExist( Login _user)
     {
         System.out.println("Bin in doesUserWithNameAndPasswordExist");
         System.out.println("user name "+_user.getName());

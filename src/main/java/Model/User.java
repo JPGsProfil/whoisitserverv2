@@ -96,7 +96,18 @@ public class User
 
     public User()
     {
+        id = null;
+        name = null;
+        password = null;
+        email = null;
+    }
 
+    public User(Integer _userId)
+    {
+        id = _userId;
+        name = null;
+        password = null;
+        email = null;
     }
 
     public User(String _email, String _name, String _password)
