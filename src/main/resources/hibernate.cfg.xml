@@ -36,5 +36,8 @@
         <mapping class="Model.Highscore"/>
         <mapping class="Model.CardSet"/>
         <mapping class="Model.Card"/>
+        <mapping class="Model.Attribute"/>
+        <mapping class="Model.Value"/>
+        <mapping class="Model.GameSession"/>
     </session-factory>
 </hibernate-configuration>

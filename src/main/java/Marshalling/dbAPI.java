@@ -1,9 +1,9 @@
 package Marshalling;
 
-import Model.Card;
-import Model.CardSet;
-import Model.Highscore;
-import Model.User;
+import Model.*;
+import database.DB_Attribute;
+import database.DB_GameSession;
+import org.hibernate.Session;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -178,6 +178,53 @@ public class dbAPI
     }
 
 
+    /////////////////////////////////////////7
+    ////////// Attribute
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "attribute/{id}" )
+    public Attribute getAttributeByID(@PathParam("id") Integer _id)
+    {
+        return DB_Attribute.getAttributeById(_id);
+    }
+
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "attribute/single" )
+    public Response AddAttribute(Attribute _attribute)
+    {
+        return DB_Attribute.addAttribute(_attribute);
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "attribute/multiple" )
+    public Response AddAttributes(List<Attribute> _attributes)
+    {
+        return DB_Attribute.addAttributes(_attributes);
+    }
+
+    // Session
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "session/{id}" )
+    public GameSession getSession(@PathParam("id") Integer _id)
+    {
+        return DB_GameSession.getSessionById(_id);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "session/byuser/{id}" )
+    public boolean isInSession(@PathParam("id") Integer _id)
+    {
+        return DB_GameSession.isUserInSession(_id);
+    }
 
 
 

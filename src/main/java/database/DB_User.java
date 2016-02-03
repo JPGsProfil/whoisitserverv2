@@ -1,7 +1,6 @@
 package database;
 
 import Marshalling.Login;
-import Marshalling.LoginResult;
 import Model.Highscore;
 import Model.User;
 import org.hibernate.Criteria;
@@ -46,7 +45,6 @@ public class DB_User
         List userList = cr.list();
         User user = new User(new Integer(-1));
         transaction.commit();
-        LoginResult result = new LoginResult("accepted");
         if(!userList.isEmpty())
         {
             user = (User) userList.get(0);

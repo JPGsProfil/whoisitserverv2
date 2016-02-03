@@ -1,42 +1,76 @@
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 /**
  * Created by Jean on 11.12.2015.
  */
+@Entity
+@Table(name = "Value")
 public class Value
 {
 
-    public int getAttributeId() {
-        return attributeId;
-    }
 
-    public int getId() {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "ID")
+    public Integer getId()
+    {
         return id;
     }
 
-    public String getName() {
+    @Column(name = "Name")
+    public String getName()
+    {
         return name;
     }
 
-    public void setAttributeId(int attributeId) {
-        this.attributeId = attributeId;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
+    public Attribute getAttribute()
+    {
+        return attribute;
     }
 
-    public void setId(int id) {
+
+
+
+    public Value()
+    {
+    }
+
+
+    public void setId(Integer id)
+    {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public Value(int attributeId, int id, String name) {
-        this.attributeId = attributeId;
+    public void setAttribute(Attribute attribute)
+    {
+        this.attribute = attribute;
+    }
+
+    public Value(Attribute attribute, Integer id, String name)
+    {
+        this.attribute = attribute;
         this.id = id;
         this.name = name;
     }
 
-    int id;
+
+
+
+    Integer id;
     String name;
-    int attributeId;
+    Attribute attribute;
 }

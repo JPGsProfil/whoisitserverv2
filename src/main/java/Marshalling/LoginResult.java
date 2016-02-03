@@ -3,6 +3,7 @@ package Marshalling;
 /**
  * Created by Jean on 02.02.2016.
  */
+/*
 public class LoginResult
 {
     public String getResult()
@@ -28,4 +29,4 @@ public class LoginResult
     }
 
 
-}
+}*/
