@@ -63,6 +63,7 @@ public class DB_User
 
     public static Response addUser(User _user)
     {
+        _user.setID(null);
         // save user
         HibernateUtil.addToDB(_user);
         // save highscore -> user is needed for highscore
