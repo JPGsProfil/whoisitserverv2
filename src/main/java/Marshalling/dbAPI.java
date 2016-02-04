@@ -221,7 +221,7 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "session/byuser/{id}" )
-    public Boolean isInSession(@PathParam("id") Integer _id)
+    public ReturnBool isInSession(@PathParam("id") Integer _id)
     {
         return DB_GameSession.isUserInSession(_id);
     }

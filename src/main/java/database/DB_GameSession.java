@@ -1,5 +1,6 @@
 package database;
 
+import Marshalling.ReturnBool;
 import Model.GameSession;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -32,7 +33,7 @@ public class DB_GameSession
 
 
 
-    public static Boolean isUserInSession(Integer _userId)
+    public static ReturnBool isUserInSession(Integer _userId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -43,14 +44,12 @@ public class DB_GameSession
         cr.add(orExp);
         List sessionList = cr.list();
         transaction.commit();
-        if(sessionList.isEmpty())
+        ReturnBool returnbool = new ReturnBool();
+        if(!sessionList.isEmpty())
         {
-            return false;
+            returnbool.bool = true;
         }
-        else
-        {
-            return true;
-        }
+        return returnbool;
     }
 
     public static List<GameSession> getSessionsWithOneUser()
