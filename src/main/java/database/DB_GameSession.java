@@ -32,7 +32,7 @@ public class DB_GameSession
 
 
 
-    public static boolean isUserInSession(Integer _userId)
+    public static Boolean isUserInSession(Integer _userId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();

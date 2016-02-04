@@ -72,7 +72,7 @@ public class dbAPI
     }
     */
 
-    @PUT
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user" )
@@ -221,7 +221,7 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "session/byuser/{id}" )
-    public boolean isInSession(@PathParam("id") Integer _id)
+    public Boolean isInSession(@PathParam("id") Integer _id)
     {
         return DB_GameSession.isUserInSession(_id);
     }
