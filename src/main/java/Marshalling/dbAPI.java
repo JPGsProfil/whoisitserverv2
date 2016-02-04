@@ -226,9 +226,10 @@ public class dbAPI
         return DB_GameSession.isUserInSession(_id);
     }
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "session/byuser/{id}" )
+    @Path( "session/joinable" )
     public List<GameSession> getSessionsWithOneUser()
     {
         return DB_GameSession.getSessionsWithOneUser();
