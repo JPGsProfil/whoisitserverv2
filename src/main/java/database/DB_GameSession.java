@@ -52,4 +52,19 @@ public class DB_GameSession
             return true;
         }
     }
+
+    public static List<GameSession> getSessionsWithOneUser()
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        Criteria cr = session.createCriteria(GameSession.class);
+        Criterion player1 = Restrictions.isNotNull("player1_ID");
+        Criterion player2 = Restrictions.isNull("player2_ID" );
+        LogicalExpression orExp = Restrictions.or(player1, player2);
+        cr.add(orExp);
+        List sessionList = cr.list();
+        transaction.commit();
+        return sessionList;
+    }
+
 }

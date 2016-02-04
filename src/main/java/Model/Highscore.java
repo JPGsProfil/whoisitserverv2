@@ -31,7 +31,7 @@ public class Highscore implements java.io.Serializable
     @ManyToOne
     //@PrimaryKeyJoinColumn
     @JsonBackReference
-    @JoinColumn(name="User_ID", insertable=false, updatable=false, nullable=false)
+    @JoinColumn(name="User_ID", nullable=false)
     public User getUser() {
         return user;
     }

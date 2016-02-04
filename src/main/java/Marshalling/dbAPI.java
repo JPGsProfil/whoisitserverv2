@@ -72,10 +72,10 @@ public class dbAPI
     }
     */
 
-    @POST
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user/new" )
+    @Path( "user" )
     public Response addUser( User _user)
     {
         System.out.println("bin in AddUser: ");
@@ -224,6 +224,14 @@ public class dbAPI
     public boolean isInSession(@PathParam("id") Integer _id)
     {
         return DB_GameSession.isUserInSession(_id);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "session/byuser/{id}" )
+    public List<GameSession> getSessionsWithOneUser()
+    {
+        return DB_GameSession.getSessionsWithOneUser();
     }
 
 
