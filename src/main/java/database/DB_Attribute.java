@@ -1,10 +1,12 @@
 package database;
 
+import Marshalling.ReturnString;
 import Model.Attribute;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +23,31 @@ public class DB_Attribute
         Attribute attribute = (Attribute) userList.get(0);
         return attribute;
     }
+
+    public static List<ReturnString> getAttributesByCardSetId(Integer _cardSetId)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        List attributes = session.createQuery( "SELECT name from Attribute A where A.card.cardSet.id is "+_cardSetId + " order by name" ).list();
+        transaction.commit();
+        List<ReturnString> returnStrings = new ArrayList<>();
+        for(int index = 0; index < attributes.size(); index++)
+        {
+            ReturnString tempString = new ReturnString((String)attributes.get(index));
+            returnStrings.add(tempString);
+        }
+       return returnStrings;
+    }
+
+    public static List<Attribute> getAttributesAndValuesByCardSetId(Integer _cardSetId)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        List attributes = session.createQuery( "from Attribute A where A.card.cardSet.id is "+_cardSetId ).list();
+        transaction.commit();
+        return attributes;
+    }
+
 
     public static Response addAttribute(Attribute _attribute)
     {

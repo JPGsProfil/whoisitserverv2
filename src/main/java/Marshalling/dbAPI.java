@@ -185,13 +185,31 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/{id}" )
-    public Attribute getAttributeByID(@PathParam("id") Integer _id)
+    public Attribute getAttributeById(@PathParam("id") Integer _id)
     {
         return DB_Attribute.getAttributeById(_id);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "attribute/bycardset/{id}" )
+    public List<Attribute> getAttributesAndValuesByCardSetId(@PathParam("id") Integer _cardsetId)
+    {
+        return DB_Attribute.getAttributesAndValuesByCardSetId(_cardsetId);
+    }
 
-    @PUT
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "attribute/bycardset/onlyname/{id}" )
+    public List<ReturnString> getAttributesByCardSetId(@PathParam("id") Integer _cardsetId)
+    {
+        return DB_Attribute.getAttributesByCardSetId(_cardsetId);
+    }
+
+
+
+
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/single" )
     public Response AddAttribute(Attribute _attribute)
@@ -199,7 +217,7 @@ public class dbAPI
         return DB_Attribute.addAttribute(_attribute);
     }
 
-    @PUT
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/multiple" )
     public Response AddAttributes(List<Attribute> _attributes)
