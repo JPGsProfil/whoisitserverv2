@@ -29,13 +29,23 @@ public class DB_User
         return user;
     }
 
-    public static boolean deleteUser(Integer _id)
+    public static Response getUserV2(Integer _id)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        List userList = session.createQuery( "from User U where U.id is "+_id ).list();
+        transaction.commit();
+        User user = (User) userList.get(0);
+        return Response.ok().entity(user).build();
+    }
+
+    public static Response deleteUser(Integer _id)
     {
         User user = DB_User.getUser(_id);
         return  HibernateUtil.deleteById(User.class, _id);
     }
 
-    public static User doesUserWithNameAndPasswordExist(Login _login)
+    public static Response doesUserWithNameAndPasswordExist(Login _login)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -48,8 +58,9 @@ public class DB_User
         if(!userList.isEmpty())
         {
             user = (User) userList.get(0);
+            return Response.noContent().entity(user).build();
         }
-        return user;
+        return Response.ok().entity(user).build();
     }
     /*
     public static User GetUserV2(Integer _id)

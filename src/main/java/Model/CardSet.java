@@ -58,6 +58,10 @@ public class CardSet implements java.io.Serializable
 
     public CardSet()
     {
+        this.id = null;
+        this.name = null;
+        this.userId = null;
+        this.cards = null;
     }
 
     public CardSet(Integer _id, String _name, Integer _userId)

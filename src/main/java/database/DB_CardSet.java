@@ -17,15 +17,23 @@ import java.util.List;
  */
 public class DB_CardSet
 {
-    public static CardSet getCardSet(Integer _id)
+    public static Response getCardSet(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
     // CardSet = nicht SQL Tabelle, sondern Model.CardSet
         List cardList = session.createQuery( "from CardSet C where C.id is "+_id ).list();
         transaction.commit();
-        CardSet cardSet = (CardSet) cardList.get(0);
-        return cardSet;
+        CardSet cardSet = new CardSet();
+        if(cardList.isEmpty())
+        {
+            return Response.noContent().build();
+        }
+        else
+        {
+            cardSet = (CardSet) cardList.get(0);
+            return Response.ok().entity(cardSet).build();
+        }
     }
 
 

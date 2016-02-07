@@ -14,21 +14,29 @@ import java.util.List;
  */
 public class DB_Attribute
 {
-    public static Attribute getAttributeById(Integer _id)
+    public static Response getAttributeById(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from Attribute A where A.id is "+_id ).list();
+        List attributeList = session.createQuery( "from Attribute A where A.id is "+_id ).list();
         transaction.commit();
-        Attribute attribute = (Attribute) userList.get(0);
-        return attribute;
+        Attribute attribute = new Attribute();
+        if(attributeList.isEmpty())
+        {
+            return Response.noContent().entity(attribute).build();
+        }
+        else
+        {
+            attribute = (Attribute) attributeList.get(0);
+            return Response.ok().entity(attribute).build();
+        }
     }
 
-    public static List<ReturnString> getAttributesByCardSetId(Integer _cardSetId)
+    public static Response getAttributesByCardSetId(Integer _cardSetId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List attributes = session.createQuery( "SELECT name from Attribute A where A.card.cardSet.id is "+_cardSetId + " order by name" ).list();
+        List attributes = session.createQuery( "SELECT name from Attribute A where A.card.cardSet.id is "+_cardSetId + " group by name" ).list();
         transaction.commit();
         List<ReturnString> returnStrings = new ArrayList<>();
         for(int index = 0; index < attributes.size(); index++)
@@ -36,16 +44,30 @@ public class DB_Attribute
             ReturnString tempString = new ReturnString((String)attributes.get(index));
             returnStrings.add(tempString);
         }
-       return returnStrings;
+        if(returnStrings.isEmpty())
+        {
+            return Response.noContent().entity(returnStrings).build();
+        }
+        else
+        {
+            return Response.ok().entity(returnStrings).build();
+        }
     }
 
-    public static List<Attribute> getAttributesAndValuesByCardSetId(Integer _cardSetId)
+    public static Response getAttributesAndValuesByCardSetId(Integer _cardSetId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
         List attributes = session.createQuery( "from Attribute A where A.card.cardSet.id is "+_cardSetId ).list();
         transaction.commit();
-        return attributes;
+        if(attributes.isEmpty())
+        {
+            return Response.noContent().entity(attributes).build();
+        }
+        else
+        {
+            return Response.ok().entity(attributes).build();
+        }
     }
 
 

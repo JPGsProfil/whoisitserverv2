@@ -19,19 +19,32 @@ public class dbAPI
     ///////////////////////////
     /////// User
 
-    //@_POST
+    /**
+     * old get user by id, now replaced by version 2 with return Response
+     * @param _id
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user/{id}" )
+    @Path( "user2/{id}" )
     public User getUserById(@PathParam("id") Integer _id)
     {
         return database.DB_User.getUser(_id);
     }
 
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user/{id}" )
+    public Response getUserByIdV2(@PathParam("id") Integer _id)
+    {
+        return database.DB_User.getUserV2(_id);
+    }
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/{id}" )
-    public boolean deleteUserById(@PathParam("id") Integer _id)
+    public Response deleteUserById(@PathParam("id") Integer _id)
     {
         return database.DB_User.deleteUser(_id);
     }
@@ -41,7 +54,7 @@ public class dbAPI
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/namepassword" )
-    public User doesUserWithNameAndPasswordExist( Login _user)
+    public Response doesUserWithNameAndPasswordExist( Login _user)
     {
         System.out.println("Bin in doesUserWithNameAndPasswordExist");
         System.out.println("user name "+_user.getName());
@@ -80,8 +93,8 @@ public class dbAPI
     {
         System.out.println("bin in AddUser: ");
         System.out.println("Name: " + _user.getName());
-        database.DB_User.addUser(_user);
-        return Response.ok().build();
+        return database.DB_User.addUser(_user);
+        //return Response.created().build();
     }
 
     @GET
@@ -111,7 +124,7 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/{id}" )
-    public CardSet getCardSet(@PathParam("id") Integer _id)
+    public Response getCardSet(@PathParam("id") Integer _id)
     {
         return database.DB_CardSet.getCardSet(_id);
     }
@@ -122,7 +135,7 @@ public class dbAPI
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/new" )
-    public Response addCardSet( CardSet _cardSet)
+    public Response addCardSet(CardSet _cardSet)
     {
         return database.DB_CardSet.addCardSet(_cardSet);
     }
@@ -145,15 +158,21 @@ public class dbAPI
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "card/single/{id}" )
-    public Card getCard(@PathParam("id") Integer _id)
+    public Response getCard(@PathParam("id") Integer _id)
     {
         return database.DB_Card.getCard(_id);
     }
 
+    /**
+     * List<Card>
+     * @param _cardSetId
+     * @return
+     */
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "card/multiple/{cardSetId}" )
-    public List<Card> getCards(@PathParam("cardSetId") Integer _cardSetId)
+    public Response getCards(@PathParam("cardSetId") Integer _cardSetId)
     {
         return database.DB_Card.getCards(_cardSetId);
     }
@@ -177,31 +196,57 @@ public class dbAPI
         return database.DB_Card.addCards(_cardList);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "card/new/multiplev2" )
+    public Response addCardsV2( List<Card> _cardList)
+    {
+        return database.DB_Card.addCardsV2(_cardList);
+    }
+
 
     /////////////////////////////////////////7
     ////////// Attribute
 
 
+    /**
+     *
+     * @param _id
+     * @return content is Attribute
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/{id}" )
-    public Attribute getAttributeById(@PathParam("id") Integer _id)
+    public Response getAttributeById(@PathParam("id") Integer _id)
     {
         return DB_Attribute.getAttributeById(_id);
     }
 
+
+    /**
+     * content: List<Attribute>
+     * @param _cardsetId
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/bycardset/{id}" )
-    public List<Attribute> getAttributesAndValuesByCardSetId(@PathParam("id") Integer _cardsetId)
+    public Response getAttributesAndValuesByCardSetId(@PathParam("id") Integer _cardsetId)
     {
         return DB_Attribute.getAttributesAndValuesByCardSetId(_cardsetId);
     }
 
+
+    /**
+     * content: List<ReturnString>
+     * @param _cardsetId
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/bycardset/onlyname/{id}" )
-    public List<ReturnString> getAttributesByCardSetId(@PathParam("id") Integer _cardsetId)
+    public Response getAttributesByCardSetId(@PathParam("id") Integer _cardsetId)
     {
         return DB_Attribute.getAttributesByCardSetId(_cardsetId);
     }

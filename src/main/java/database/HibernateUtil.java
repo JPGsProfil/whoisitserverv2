@@ -11,6 +11,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.hibernate.service.ServiceRegistry;
 
 import javax.ws.rs.core.Response;
@@ -80,6 +81,7 @@ public class HibernateUtil
         }
         catch (HibernateException e)
         {
+            //TransactionStatus transactionStatus = currentTransaction.getStatus();
             if (currentTransaction!=null) currentTransaction.rollback();
             e.printStackTrace();
             return Response.notModified().build();
@@ -93,18 +95,17 @@ public class HibernateUtil
     }
 
 
-    public static boolean deleteById(Class<?> type, Serializable id) {
+    public static Response deleteById(Class<?> type, Serializable id)
+    {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Object persistentInstance = session.load(type, id);
-        if (persistentInstance != null) {
+        if (persistentInstance != null)
+        {
             session.delete(persistentInstance);
-            return true;
+            return Response.ok().build();
         }
-        return false;
+        return Response.notModified().build();
     }
-
-
-
 
 
 
