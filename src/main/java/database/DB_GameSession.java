@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class DB_GameSession
 {
-    public static GameSession getSessionById(Integer _id)
+    public static Response getSessionById(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -27,13 +27,26 @@ public class DB_GameSession
         if(!sessionList.isEmpty())
         {
             gamesession= (GameSession) sessionList.get(0);
+            return Response.ok().entity(gamesession).build();
         }
-        return gamesession;
+        else
+        {
+            return Response.noContent().entity(gamesession).build();
+        }
+    }
+
+
+    public static Response addGameSession(GameSession _session)
+    {
+        _session.setId(null);
+        // save user
+        return HibernateUtil.addToDB(_session);
     }
 
 
 
-    public static ReturnBool isUserInSession(Integer _userId)
+
+    public static Response isUserInSession(Integer _userId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -44,15 +57,19 @@ public class DB_GameSession
         cr.add(orExp);
         List sessionList = cr.list();
         transaction.commit();
-        ReturnBool returnbool = new ReturnBool();
+        ReturnBool returnbool = new ReturnBool(); // initalized with false
         if(!sessionList.isEmpty())
         {
             returnbool.bool = true;
+            return Response.ok().entity(returnbool).build();
         }
-        return returnbool;
+        else
+        {
+            return Response.noContent().entity(returnbool).build();
+        }
     }
 
-    public static List<GameSession> getSessionsWithOneUser()
+    public static Response getSessionsWithOneUser()
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
@@ -63,7 +80,14 @@ public class DB_GameSession
         cr.add(orExp);
         List sessionList = cr.list();
         transaction.commit();
-        return sessionList;
+        if(sessionList.isEmpty())
+        {
+            return Response.noContent().entity(sessionList).build();
+        }
+        else
+        {
+            return Response.ok().entity(sessionList).build();
+        }
     }
 
 }

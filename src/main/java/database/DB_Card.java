@@ -51,9 +51,10 @@ public class DB_Card
 
 
 
-    public static Response addCard(Card _cardSet)
+    public static Response addCard(Card _card)
     {
-        return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
+        _card.setId(null);
+        return HibernateUtil.addToDB(_card);
     }
 
     public static Response addCards(List<Card> _cardSet)
@@ -73,9 +74,13 @@ public class DB_Card
     }
 
 
-    public static Response addCardsV2(List<Card> _cardSet)
+    public static Response addCardsV2(List<Card> _cards)
     {
-        return HibernateUtil.addToDB(_cardSet);
+        for(int index = 0; index < _cards.size(); index ++)
+        {
+            _cards.get(index).setId(null);
+        }
+        return HibernateUtil.addToDB(_cards);
     }
 
 

@@ -27,7 +27,26 @@ public class DB_CardSet
         CardSet cardSet = new CardSet();
         if(cardList.isEmpty())
         {
-            return Response.noContent().build();
+            return Response.noContent().entity(cardSet).build();
+        }
+        else
+        {
+            cardSet = (CardSet) cardList.get(0);
+            return Response.ok().entity(cardSet).build();
+        }
+    }
+
+    public static Response getCardSetByUserId(Integer _userId)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        // CardSet = nicht SQL Tabelle, sondern Model.CardSet
+        List cardList = session.createQuery( "from CardSet C where C.userId is " + _userId ).list();
+        transaction.commit();
+        CardSet cardSet = new CardSet();
+        if(cardList.isEmpty())
+        {
+            return Response.noContent().entity(cardSet).build();
         }
         else
         {
@@ -39,6 +58,7 @@ public class DB_CardSet
 
     public static Response addCardSet(CardSet _cardSet)
     {
+        _cardSet.setId(null);
         return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
 
     }

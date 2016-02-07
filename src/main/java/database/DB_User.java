@@ -75,11 +75,30 @@ public class DB_User
     public static Response addUser(User _user)
     {
         _user.setID(null);
-        // save user
-        HibernateUtil.addToDB(_user);
-        // save highscore -> user is needed for highscore
-        Highscore score = new Highscore(_user);
-        return HibernateUtil.addToDB(score);
+
+        // user with same name not allowed
+        if(doesUserWithNameExist(_user.getName()))
+        {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+        else
+        {
+            // save user
+            Response response = HibernateUtil.addToDB(_user);
+            // save highscore -> user is needed for highscore
+            if(
+                    response.getStatus() == Response.Status.CREATED.getStatusCode()
+                    || response.getStatus() == Response.Status.OK.getStatusCode()
+              )
+            {
+                Highscore score = new Highscore(_user);
+                response = HibernateUtil.addToDB(score);
+            }
+            return response;
+        }
+
+
+
 
 
         /*
@@ -122,6 +141,26 @@ public class DB_User
         session.close();
 
         return Response.ok().build();
+    }
+
+
+    private static boolean doesUserWithNameExist(String _name)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        Criteria cr = session.createCriteria(User.class);
+        cr.add(Restrictions.eq("name",_name ));
+        List userList = cr.list();
+        transaction.commit();
+        if(userList.isEmpty())
+        {
+            return false;
+        }
+
+        else
+        {
+            return true;
+        }
     }
 
 

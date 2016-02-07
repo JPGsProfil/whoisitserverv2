@@ -73,6 +73,7 @@ public class DB_Attribute
 
     public static Response addAttribute(Attribute _attribute)
     {
+        _attribute.setId(null);
         return HibernateUtil.addToDB(_attribute);
     }
 

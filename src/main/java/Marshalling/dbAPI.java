@@ -19,20 +19,12 @@ public class dbAPI
     ///////////////////////////
     /////// User
 
+
     /**
-     * old get user by id, now replaced by version 2 with return Response
+     * getestet
      * @param _id
      * @return
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user2/{id}" )
-    public User getUserById(@PathParam("id") Integer _id)
-    {
-        return database.DB_User.getUser(_id);
-    }
-
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "user/{id}" )
@@ -41,9 +33,27 @@ public class dbAPI
         return database.DB_User.getUserV2(_id);
     }
 
+    /**
+     * tested
+     * return http 409 (conflict) if user already exist
+     * @param _user
+     * @return
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user" )
+    public Response addUser( User _user)
+    {
+        System.out.println("bin in AddUser: ");
+        System.out.println("Name: " + _user.getName());
+        return database.DB_User.addUser(_user);
+        //return Response.created().build();
+    }
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user/{id}" )
+    @Path( "user1" )
     public Response deleteUserById(@PathParam("id") Integer _id)
     {
         return database.DB_User.deleteUser(_id);
@@ -73,29 +83,6 @@ public class dbAPI
 
     }
 
-
-    /*
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user/namepw" )
-    public User GetUserByNameAndPwd( String _username, String _password)
-    {
-        return database.DB_User.getUserByIdAndPwd(_username, _password);
-    }
-    */
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user" )
-    public Response addUser( User _user)
-    {
-        System.out.println("bin in AddUser: ");
-        System.out.println("Name: " + _user.getName());
-        return database.DB_User.addUser(_user);
-        //return Response.created().build();
-    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -130,15 +117,25 @@ public class dbAPI
     }
 
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "cardset/user/{id}" )
+    public Response getCardSetByUserId(@PathParam("id") Integer _userId)
+    {
+        return database.DB_CardSet.getCardSetByUserId(_userId);
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "cardset/new" )
+    @Path( "cardset" )
     public Response addCardSet(CardSet _cardSet)
     {
         return database.DB_CardSet.addCardSet(_cardSet);
     }
+
+
+
 
 
     @GET
@@ -200,9 +197,9 @@ public class dbAPI
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "card/new/multiplev2" )
-    public Response addCardsV2( List<Card> _cardList)
+    public Response addCardsV2( List<Card> _cards)
     {
-        return database.DB_Card.addCardsV2(_cardList);
+        return database.DB_Card.addCardsV2(_cards);
     }
 
 
@@ -257,7 +254,7 @@ public class dbAPI
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/single" )
-    public Response AddAttribute(Attribute _attribute)
+    public Response addAttribute(Attribute _attribute)
     {
         return DB_Attribute.addAttribute(_attribute);
     }
@@ -265,42 +262,62 @@ public class dbAPI
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "attribute/multiple" )
-    public Response AddAttributes(List<Attribute> _attributes)
+    public Response addAttributes(List<Attribute> _attributes)
     {
         return DB_Attribute.addAttributes(_attributes);
     }
 
     // Session
 
+    /**
+     * content: Gamesession
+     * @param _id
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "session/{id}" )
-    public GameSession getSession(@PathParam("id") Integer _id)
+    public Response getSession(@PathParam("id") Integer _id)
     {
         return DB_GameSession.getSessionById(_id);
     }
 
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "session" )
+    public Response addSession(GameSession _session)
+    {
+        return DB_GameSession.addGameSession(_session);
+    }
+
+
+
+    /**
+     * content: ReturnBool
+     * @param _id
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "session/byuser/{id}" )
-    public ReturnBool isInSession(@PathParam("id") Integer _id)
+    public Response isInSession(@PathParam("id") Integer _id)
     {
         return DB_GameSession.isUserInSession(_id);
     }
 
 
+    /**
+     * content List<GameSession>
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "session/joinable" )
-    public List<GameSession> getSessionsWithOneUser()
+    public Response getSessionsWithOneUser()
     {
         return DB_GameSession.getSessionsWithOneUser();
     }
-
-
-
-
 
 
 
