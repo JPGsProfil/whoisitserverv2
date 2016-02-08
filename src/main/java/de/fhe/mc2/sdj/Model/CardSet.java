@@ -1,8 +1,7 @@
-package Model;
+package de.fhe.mc2.sdj.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Jean on 11.12.2015.

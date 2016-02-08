@@ -1,10 +1,7 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
-import Model.Card;
-import Model.CardSet;
-import Model.Highscore;
-import Model.User;
-import org.hibernate.HibernateException;
+import de.fhe.mc2.sdj.model.Card;
+import de.fhe.mc2.sdj.model.CardSet;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -21,7 +18,7 @@ public class DB_CardSet
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-    // CardSet = nicht SQL Tabelle, sondern Model.CardSet
+    // CardSet = nicht SQL Tabelle, sondern CardSet
         List cardList = session.createQuery( "from CardSet C where C.id is "+_id ).list();
         transaction.commit();
         CardSet cardSet = new CardSet();
@@ -36,22 +33,20 @@ public class DB_CardSet
         }
     }
 
-    public static Response getCardSetByUserId(Integer _userId)
+    public static Response getCardSetsByUserId(Integer _userId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        // CardSet = nicht SQL Tabelle, sondern Model.CardSet
+        // CardSet = nicht SQL Tabelle, sondern CardSet
         List cardList = session.createQuery( "from CardSet C where C.userId is " + _userId ).list();
         transaction.commit();
-        CardSet cardSet = new CardSet();
         if(cardList.isEmpty())
         {
-            return Response.noContent().entity(cardSet).build();
+            return Response.noContent().entity(cardList).build();
         }
         else
         {
-            cardSet = (CardSet) cardList.get(0);
-            return Response.ok().entity(cardSet).build();
+            return Response.ok().entity(cardList).build();
         }
     }
 
@@ -59,6 +54,10 @@ public class DB_CardSet
     public static Response addCardSet(CardSet _cardSet)
     {
         _cardSet.setId(null);
+        for(int index = 0; index < _cardSet.getCards().size(); index ++)
+        {
+            _cardSet.getCards().get(index).setId(null);
+        }
         return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
 
     }

@@ -1,6 +1,6 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
-import Model.Card;
+import de.fhe.mc2.sdj.model.Card;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

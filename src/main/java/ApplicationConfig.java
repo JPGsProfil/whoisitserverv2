@@ -1,6 +1,6 @@
 
 
-import Marshalling.dbAPI;
+import de.fhe.mc2.sdj.marshalling.dbAPI;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -18,7 +18,7 @@ public class ApplicationConfig extends Application
     public Set<Class<?>> getClasses()
     {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add( Marshalling.dbAPI.class );
+        classes.add( dbAPI.class );
         return super.getClasses();
     }
 }

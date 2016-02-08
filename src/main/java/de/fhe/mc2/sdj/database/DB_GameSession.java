@@ -1,7 +1,7 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
-import Marshalling.ReturnBool;
-import Model.GameSession;
+import de.fhe.mc2.sdj.marshalling.ReturnBool;
+import de.fhe.mc2.sdj.model.GameSession;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

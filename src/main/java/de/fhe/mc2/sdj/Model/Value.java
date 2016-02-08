@@ -1,7 +1,6 @@
-package Model;
+package de.fhe.mc2.sdj.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 

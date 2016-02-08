@@ -1,4 +1,4 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
 
 
@@ -11,14 +11,11 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.hibernate.service.ServiceRegistry;
 
 import javax.ws.rs.core.Response;
 import java.io.Serializable;
 import java.util.List;
-
-import java.util.Iterator;
 
 
 public class HibernateUtil

@@ -21,8 +21,6 @@
             <url>http://nexus.qmino.com/content/repositories/miredot</url>
         </pluginRepository>
     </pluginRepositories>
-
-
     <dependencies>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>

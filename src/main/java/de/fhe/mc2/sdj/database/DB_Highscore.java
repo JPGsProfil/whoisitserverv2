@@ -1,6 +1,6 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
-import Model.Highscore;
+import de.fhe.mc2.sdj.model.Highscore;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

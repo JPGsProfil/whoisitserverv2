@@ -7,7 +7,7 @@ http://avilyne.com/?p=105
 
 Metadata Meta = new MetadataSource(serviceRegistry)
     .addAnnotadedClass(DBRole.class)
-    .addAnnotadedClassName("de.fhe.database.DBRole")
+    .addAnnotadedClassName("de.fhe.de.fhe.mc2.sdj.database.DBRole")
     .getMetadataBuilder()
     .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
     .build();

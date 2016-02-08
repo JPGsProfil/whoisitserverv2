@@ -1,7 +1,7 @@
-package database;
+package de.fhe.mc2.sdj.database;
 
-import Marshalling.ReturnString;
-import Model.Attribute;
+import de.fhe.mc2.sdj.marshalling.ReturnString;
+import de.fhe.mc2.sdj.model.Attribute;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -11,6 +11,10 @@ import java.util.List;
 
 /**
  * Created by Jean on 03.02.2016.
+ */
+
+/**
+ * database class for attributes which are part of the card
  */
 public class DB_Attribute
 {

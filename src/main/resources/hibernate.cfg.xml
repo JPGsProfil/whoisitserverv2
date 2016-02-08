@@ -31,13 +31,13 @@
 
 
         <!-- List of class mapping files, JPG: used for hibernate querys-->
-        <mapping class="Marshalling.dbAPI"/>
-        <mapping class="Model.User"/>
-        <mapping class="Model.Highscore"/>
-        <mapping class="Model.CardSet"/>
-        <mapping class="Model.Card"/>
-        <mapping class="Model.Attribute"/>
-        <mapping class="Model.Value"/>
-        <mapping class="Model.GameSession"/>
+        <mapping class="de.fhe.mc2.sdj.marshalling.dbAPI"/>
+        <mapping class="de.fhe.mc2.sdj.model.User"/>
+        <mapping class="de.fhe.mc2.sdj.model.Highscore"/>
+        <mapping class="de.fhe.mc2.sdj.model.CardSet"/>
+        <mapping class="de.fhe.mc2.sdj.model.Card"/>
+        <mapping class="de.fhe.mc2.sdj.model.Attribute"/>
+        <mapping class="de.fhe.mc2.sdj.model.Value"/>
+        <mapping class="de.fhe.mc2.sdj.model.GameSession"/>
     </session-factory>
 </hibernate-configuration>

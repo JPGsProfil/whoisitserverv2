@@ -1,4 +1,4 @@
-package Model;
+package de.fhe.mc2.sdj.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 

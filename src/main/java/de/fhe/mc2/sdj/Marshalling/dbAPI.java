@@ -1,9 +1,7 @@
-package Marshalling;
+package de.fhe.mc2.sdj.marshalling;
 
-import Model.*;
-import database.DB_Attribute;
-import database.DB_GameSession;
-import org.hibernate.Session;
+import de.fhe.mc2.sdj.database.*;
+import de.fhe.mc2.sdj.model.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -30,7 +28,7 @@ public class dbAPI
     @Path( "user/{id}" )
     public Response getUserByIdV2(@PathParam("id") Integer _id)
     {
-        return database.DB_User.getUserV2(_id);
+        return DB_User.getUserV2(_id);
     }
 
     /**
@@ -47,7 +45,7 @@ public class dbAPI
     {
         System.out.println("bin in AddUser: ");
         System.out.println("Name: " + _user.getName());
-        return database.DB_User.addUser(_user);
+        return DB_User.addUser(_user);
         //return Response.created().build();
     }
 
@@ -63,7 +61,7 @@ public class dbAPI
     @Path( "user" )
     public Response deleteUser(UserWithHighscore _user)
     {
-        return database.DB_User.deleteUser(_user);
+        return DB_User.deleteUser(_user);
     }
 
 
@@ -75,7 +73,7 @@ public class dbAPI
     {
         System.out.println("Bin in doesUserWithNameAndPasswordExist");
         System.out.println("user name "+_user.getName());
-        return database.DB_User.doesUserWithNameAndPasswordExist(_user);
+        return DB_User.doesUserWithNameAndPasswordExist(_user);
     }
 
     @GET
@@ -98,7 +96,7 @@ public class dbAPI
     {
         Highscore score = new Highscore();
         User testUser = new User("test@test.de", "Er", "321");
-        return database.DB_User.addUser(testUser);
+        return DB_User.addUser(testUser);
     }
 
 
@@ -107,7 +105,7 @@ public class dbAPI
     @Path( "user/addposttest" )
     public Response addUserByPostTest()
     {
-        return database.DB_User.testwrite2();
+        return DB_User.testwrite2();
     }
 
 
@@ -116,30 +114,50 @@ public class dbAPI
     /////// Cardset
 
 
+    /**
+     * get the cardset which belongs to given cardset id
+     * includes all cards with multiple attributes and values
+     * last tested 08.02.16
+     * @param _id id of the cardset
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/{id}" )
     public Response getCardSet(@PathParam("id") Integer _id)
     {
-        return database.DB_CardSet.getCardSet(_id);
+        return DB_CardSet.getCardSet(_id);
     }
 
 
+    /**
+     * get all cardsets belonging to a specific userid
+     * includes all cards with multiple attributes and values
+     * last tested 08.02.16
+     * @param _userId id of the user (foreign key)
+     * @return
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/user/{id}" )
-    public Response getCardSetByUserId(@PathParam("id") Integer _userId)
+    public Response getCardSetsByUserId(@PathParam("id") Integer _userId)
     {
-        return database.DB_CardSet.getCardSetByUserId(_userId);
+        return DB_CardSet.getCardSetsByUserId(_userId);
     }
 
+
+    /**
+     *
+     * @param _cardSet
+     * @return
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset" )
     public Response addCardSet(CardSet _cardSet)
     {
-        return database.DB_CardSet.addCardSet(_cardSet);
+        return DB_CardSet.addCardSet(_cardSet);
     }
 
 
@@ -152,7 +170,7 @@ public class dbAPI
     @Path( "cardset/new/test" )
     public Response addCardSetTest()
     {
-        return database.DB_CardSet.addCardSetTest();
+        return DB_CardSet.addCardSetTest();
     }
 
 
@@ -165,7 +183,7 @@ public class dbAPI
     @Path( "card/single/{id}" )
     public Response getCard(@PathParam("id") Integer _id)
     {
-        return database.DB_Card.getCard(_id);
+        return DB_Card.getCard(_id);
     }
 
     /**
@@ -179,7 +197,7 @@ public class dbAPI
     @Path( "card/multiple/{cardSetId}" )
     public Response getCards(@PathParam("cardSetId") Integer _cardSetId)
     {
-        return database.DB_Card.getCards(_cardSetId);
+        return DB_Card.getCards(_cardSetId);
     }
 
 
@@ -189,7 +207,7 @@ public class dbAPI
     @Path( "card/new/single" )
     public Response addCard( Card _card)
     {
-        return database.DB_Card.addCard(_card);
+        return DB_Card.addCard(_card);
     }
 
     @POST
@@ -198,7 +216,7 @@ public class dbAPI
     @Path( "card/new/multiple" )
     public Response addCards( List<Card> _cardList)
     {
-        return database.DB_Card.addCards(_cardList);
+        return DB_Card.addCards(_cardList);
     }
 
     @POST
@@ -207,7 +225,7 @@ public class dbAPI
     @Path( "card/new/multiplev2" )
     public Response addCardsV2( List<Card> _cards)
     {
-        return database.DB_Card.addCardsV2(_cards);
+        return DB_Card.addCardsV2(_cards);
     }
 
 
