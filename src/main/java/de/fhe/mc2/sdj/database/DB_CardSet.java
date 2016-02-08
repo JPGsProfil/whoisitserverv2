@@ -1,7 +1,9 @@
 package de.fhe.mc2.sdj.database;
 
+import de.fhe.mc2.sdj.model.Attribute;
 import de.fhe.mc2.sdj.model.Card;
 import de.fhe.mc2.sdj.model.CardSet;
+import de.fhe.mc2.sdj.model.Value;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -53,12 +55,41 @@ public class DB_CardSet
 
     public static Response addCardSet(CardSet _cardSet)
     {
+        // set cardset id primary key null (if android makes a mistake, otherwise would cause update instead of insert
         _cardSet.setId(null);
-        for(int index = 0; index < _cardSet.getCards().size(); index ++)
+        if(_cardSet.getCards() != null)
         {
-            _cardSet.getCards().get(index).setId(null);
+            // cascade all cards (only possible if one or more
+            for(int cardIndex = 0; cardIndex < _cardSet.getCards().size(); cardIndex ++)
+            {
+                // for cascade save: each Card obj needs Cardset-obj for foreign key
+                _cardSet.getCards().get(cardIndex).setCardSet(_cardSet);
+                //  set card id primary key null
+                _cardSet.getCards().get(cardIndex).setId(null);
+                if(_cardSet.getCards().get(cardIndex).getAttributeList() != null)
+                {
+                    //cascading only possible if there are some
+                    List<Attribute> attributes = _cardSet.getCards().get(cardIndex).getAttributeList();
+                    for (int attributeIndex = 0; attributeIndex < attributes.size(); attributeIndex ++)
+                    {
+                        // for cascade save: each Attribute obj needs Card-obj for foreign key
+                        attributes.get(attributeIndex).setCard(_cardSet.getCards().get(cardIndex));
+                        // set attribute id primary key null (if android makes a mistake, otherwise causes update instead of insert
+                        attributes.get(attributeIndex).setId(null);
+                        if(attributes.get(attributeIndex).getValue() != null)
+                        {
+                            // for cascade save: Value needs Attribute-obj for foreign key
+                            attributes.get(attributeIndex).getValue().setAttribute(attributes.get(attributeIndex));
+                            // set id value primary key null (if android makes a mistake, otherwise causes update instead of insert
+                            attributes.get(attributeIndex).getValue().setId(null);
+                        }
+                    }
+                }
+            }
         }
-        return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
+
+        //_cardSet.setCards(null);
+        return HibernateUtil.addToDB(_cardSet);
 
     }
 
