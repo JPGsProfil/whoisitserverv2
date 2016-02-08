@@ -107,6 +107,31 @@ public class HibernateUtil
         return Response.notModified().build();
     }
 
+    public static Response deleteObj(Object _object)
+    {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction currentTransaction = null;
+        try
+        {
+            currentTransaction = session.beginTransaction();
+            session.delete(_object);
+            currentTransaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            //TransactionStatus transactionStatus = currentTransaction.getStatus();
+            if (currentTransaction!=null) currentTransaction.rollback();
+            e.printStackTrace();
+            return Response.notModified().build();
+        }
+        finally
+        {
+            session.close();
+        }
+
+        return Response.ok().build();
+    }
+
 
 
 

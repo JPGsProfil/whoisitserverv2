@@ -28,10 +28,24 @@ public class Highscore implements java.io.Serializable
         return id;
     }
 
+    /*
+    @Column(name = "User_ID")
+    public Integer getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(Integer _id)
+    {
+        this.id = _id;
+    }
+    */
+
+
     @ManyToOne
     //@PrimaryKeyJoinColumn
     @JsonBackReference
-    @JoinColumn(name="User_ID", nullable=false)
+    @JoinColumn(name="User_ID", referencedColumnName = "ID")
     public User getUser() {
         return user;
     }
@@ -102,6 +116,7 @@ public class Highscore implements java.io.Serializable
     private User user;
     private Integer matchesWon;
     private Integer matchesLost;
+    //private Integer userId;
 
 
 

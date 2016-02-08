@@ -3,6 +3,7 @@ package database;
 import Marshalling.Login;
 import Model.Highscore;
 import Model.User;
+import Model.UserWithHighscore;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,15 +20,7 @@ import java.util.List;
  */
 public class DB_User
 {
-    public static User getUser(Integer _id)
-    {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from User U where U.id is "+_id ).list();
-        transaction.commit();
-        User user = (User) userList.get(0);
-        return user;
-    }
+
 
     public static Response getUserV2(Integer _id)
     {
@@ -39,10 +32,9 @@ public class DB_User
         return Response.ok().entity(user).build();
     }
 
-    public static Response deleteUser(Integer _id)
+    public static Response deleteUser(UserWithHighscore _user)
     {
-        User user = DB_User.getUser(_id);
-        return  HibernateUtil.deleteById(User.class, _id);
+        return  HibernateUtil.deleteObj(_user);
     }
 
     public static Response doesUserWithNameAndPasswordExist(Login _login)
@@ -55,12 +47,15 @@ public class DB_User
         List userList = cr.list();
         User user = new User(new Integer(-1));
         transaction.commit();
-        if(!userList.isEmpty())
+        if(userList.isEmpty())
         {
-            user = (User) userList.get(0);
             return Response.noContent().entity(user).build();
         }
-        return Response.ok().entity(user).build();
+        else
+        {
+            user = (User) userList.get(0);
+            return Response.ok().entity(user).build();
+        }
     }
     /*
     public static User GetUserV2(Integer _id)
@@ -141,6 +136,16 @@ public class DB_User
         session.close();
 
         return Response.ok().build();
+    }
+
+    private static User getUser(Integer _id)
+    {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+        List userList = session.createQuery( "from User U where U.id is "+_id ).list();
+        transaction.commit();
+        User user = (User) userList.get(0);
+        return user;
     }
 
 

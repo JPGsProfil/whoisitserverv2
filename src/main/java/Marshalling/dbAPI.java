@@ -51,12 +51,19 @@ public class dbAPI
         //return Response.created().build();
     }
 
+    /**
+     * not working with user -> if needed user on andrdoid should be changed like UserWithHighscore
+     * OR adding userId to highscore (already in highscore comments)
+     * High
+     * @param _user
+     * @return
+     */
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    @Path( "user1" )
-    public Response deleteUserById(@PathParam("id") Integer _id)
+    @Path( "user" )
+    public Response deleteUser(UserWithHighscore _user)
     {
-        return database.DB_User.deleteUser(_id);
+        return database.DB_User.deleteUser(_user);
     }
 
 
