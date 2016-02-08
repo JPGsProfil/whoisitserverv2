@@ -32,7 +32,7 @@ public class DB_Card
 
 
     /**
-     * List<Card>
+     * List of Cards
      * @param _cardSetId
      * @return
      */

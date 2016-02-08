@@ -22,8 +22,8 @@ public class dbAPI
 
     /**
      * getestet
-     * @param _id
-     * @return
+     * @param _id user id
+     * @return 200 or 400
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,7 +52,7 @@ public class dbAPI
     }
 
     /**
-     * not working with user -> if needed user on andrdoid should be changed like UserWithHighscore
+     * not working with user. if needed user on andrdoid should be changed like UserWithHighscore
      * OR adding userId to highscore (already in highscore comments)
      * High
      * @param _user
@@ -115,6 +115,7 @@ public class dbAPI
     ///////////////////////////
     /////// Cardset
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path( "cardset/{id}" )
@@ -168,7 +169,7 @@ public class dbAPI
     }
 
     /**
-     * List<Card>
+     * List of Cards
      * @param _cardSetId
      * @return
      */
@@ -229,7 +230,7 @@ public class dbAPI
 
 
     /**
-     * content: List<Attribute>
+     * content: List of Attributes
      * @param _cardsetId
      * @return
      */
@@ -243,7 +244,7 @@ public class dbAPI
 
 
     /**
-     * content: List<ReturnString>
+     * content: List of ReturnString
      * @param _cardsetId
      * @return
      */
@@ -315,7 +316,7 @@ public class dbAPI
 
 
     /**
-     * content List<GameSession>
+     * content List of GameSession
      * @return
      */
     @GET
