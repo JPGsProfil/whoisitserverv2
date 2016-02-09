@@ -78,11 +78,31 @@ public class DB_Attribute
     public static Response addAttribute(Attribute _attribute)
     {
         _attribute.setId(null);
+        // prepare children if exist
+        if(_attribute.getValue() != null)
+        {
+            // for cascade save: Value needs Attribute-obj for foreign key
+            _attribute.getValue().setAttribute(_attribute);
+            // set id value primary key null (if android makes a mistake, otherwise causes update instead of insert
+            _attribute.getValue().setId(null);
+        }
         return HibernateUtil.addToDB(_attribute);
     }
 
     public static Response addAttributes(List<Attribute> _attributes)
     {
+        // prepare children if exist
+        for(int index = 0; index < _attributes.size(); index ++)
+        {
+            _attributes.get(index).setId(null);
+            if(_attributes.get(index).getValue() != null)
+            {
+                // for cascade save: Value needs Attribute-obj for foreign key
+                _attributes.get(index).getValue().setAttribute(_attributes.get(index));
+                // set id value primary key null (if android makes a mistake, otherwise causes update instead of insert
+                _attributes.get(index).getValue().setId(null);
+            }
+        }
         return HibernateUtil.addToDB(_attributes);
     }
 }
