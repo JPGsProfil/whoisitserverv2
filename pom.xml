@@ -98,13 +98,13 @@
                             <httpStatusCode>
                                 <httpCode>401</httpCode>
                                 <document>explicit: com.qmino.miredot.petstore.exceptions.AuthorizationException</document>
-                                <defaultMessage>The user is logged in, but is not authorized to use this service.
+                                <defaultMessage>The user is not authorized to use this service.
                                 </defaultMessage>
                             </httpStatusCode>
                             <httpStatusCode>
                                 <httpCode>412</httpCode>
                                 <document>put,post</document>
-                                <defaultMessage>Invalid JSON/XML input.</defaultMessage>
+                                <defaultMessage>Invalid JSON input.</defaultMessage>
                             </httpStatusCode>
                             <httpStatusCode>
                                 <httpCode>500</httpCode>

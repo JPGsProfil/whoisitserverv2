@@ -1,6 +1,10 @@
 package de.fhe.mc2.sdj.model;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -80,7 +84,8 @@ public class CardSet implements java.io.Serializable
 
 
     // cardSet = Member von Card
-    @OneToMany(mappedBy="cardSet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="cardSet", fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     public List<Card> getCards()
     {
         return cards;

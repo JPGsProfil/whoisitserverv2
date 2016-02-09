@@ -36,7 +36,7 @@ public class Attribute
     }
 
 
-    @OneToOne(mappedBy="attribute", cascade=CascadeType.ALL)
+    @OneToOne(mappedBy="attribute", cascade=CascadeType.PERSIST)
     public Value getValue()
     {
         return value;

@@ -40,7 +40,7 @@ public class DB_Card
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction  = session.beginTransaction();
-        List cardList = session.createQuery( "from Card C where C.cardSetId is "+_cardSetId ).list();
+        List cardList = session.createQuery( "from Card C where C.cardSet.id is "+_cardSetId ).list();
         transaction.commit();
         if(cardList.isEmpty())
         {
