@@ -1,6 +1,8 @@
 package de.fhe.mc2.sdj.database;
 
+import de.fhe.mc2.sdj.model.Attribute;
 import de.fhe.mc2.sdj.model.Card;
+import de.fhe.mc2.sdj.model.CardSet;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -50,13 +52,41 @@ public class DB_Card
     }
 
 
-
+    /**
+     * add a single card to the database
+     * @param _card
+     * @return
+     */
     public static Response addCard(Card _card)
     {
         _card.setId(null);
+        CardSet cardSet = (CardSet) DB_CardSet.getCardSet(_card.getCardSetId()).getEntity();
+        System.out.println("cardset name ermittelt "+cardSet.getName());
+        _card.setCardSet(cardSet);
+        // prepare attribute and value objects for adding to db
+        // todo: auslagern, da auch in Cardset verwendet
+        if(_card.getAttributeList() != null)
+        {
+            List<Attribute> attributes = _card.getAttributeList();
+            for (int attributeIndex = 0; attributeIndex < attributes.size(); attributeIndex ++)
+            {
+                // for cascade save: each Attribute obj needs Card-obj for foreign key
+                attributes.get(attributeIndex).setCard(_card);
+                // set attribute id primary key null (if android makes a mistake, otherwise causes update instead of insert
+                attributes.get(attributeIndex).setId(null);
+                if(attributes.get(attributeIndex).getValue() != null)
+                {
+                    // for cascade save: Value needs Attribute-obj for foreign key
+                    attributes.get(attributeIndex).getValue().setAttribute(attributes.get(attributeIndex));
+                    // set id value primary key null (if android makes a mistake, otherwise causes update instead of insert
+                    attributes.get(attributeIndex).getValue().setId(null);
+                }
+            }
+        }
         return HibernateUtil.addToDB(_card);
     }
 
+    /*
     public static Response addCards(List<Card> _cardSet)
     {
         //return HibernateUtil.addToDB(HibernateUtil.addToDB(_cardSet));
@@ -71,9 +101,10 @@ public class DB_Card
             }
         }
         return currentResponse;
-    }
+    }*/
 
 
+    /*
     public static Response addCardsV2(List<Card> _cards)
     {
         for(int index = 0; index < _cards.size(); index ++)
@@ -81,7 +112,7 @@ public class DB_Card
             _cards.get(index).setId(null);
         }
         return HibernateUtil.addToDB(_cards);
-    }
+    }*/
 
 
 }

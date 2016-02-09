@@ -37,6 +37,12 @@ public class Card
         return name;
     }
 
+    @Transient
+    public Integer getCardSetId()
+    {
+        return cardSetId;
+    }
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn (name = "Cardset_ID",referencedColumnName = "ID")
@@ -77,6 +83,14 @@ public class Card
         this.attributeList = attributeList;
     }
 
+    public void setCardSetId(Integer cardSetId)
+    {
+        this.cardSetId = cardSetId;
+    }
+
+
+
+
     public Card(Integer _id, String _name, String _image)
     {
         this.id = _id;
@@ -100,12 +114,12 @@ public class Card
 
 
 
-    Integer id;
-    String name;
-    String image;
-
-    CardSet cardSet;
-    List<Attribute> attributeList;
+    private Integer id;
+    private String name;
+    private String image;
+    private CardSet cardSet;
+    private Integer cardSetId;
+    private List<Attribute> attributeList;
 
 
 }
