@@ -29,7 +29,8 @@ public class Value
     }
 
     @OneToOne
-    @PrimaryKeyJoinColumn
+    //@PrimaryKeyJoinColumn // user
+    @JoinColumn (name = "Attribute_ID",referencedColumnName = "ID")
     @JsonBackReference
     public Attribute getAttribute()
     {

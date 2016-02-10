@@ -35,8 +35,14 @@ public class Attribute
         return updateDate;
     }
 
+    @Transient
+    public Integer getCardId()
+    {
+        return cardId;
+    }
 
-    @OneToOne(mappedBy="attribute", cascade=CascadeType.PERSIST)
+
+    @OneToOne(mappedBy="attribute", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Value getValue()
     {
         return value;
@@ -65,6 +71,11 @@ public class Attribute
     public void setUpdateDate(Date updateDate)
     {
         this.updateDate = updateDate;
+    }
+
+    public void setCardId(Integer cardId)
+    {
+        this.cardId = cardId;
     }
 
 
@@ -97,6 +108,7 @@ public class Attribute
     private String name;
     private Date updateDate;
     private Value value;
+    private Integer cardId;
 
 
 

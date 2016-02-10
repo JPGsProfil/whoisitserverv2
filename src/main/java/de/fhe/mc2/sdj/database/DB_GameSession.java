@@ -38,8 +38,16 @@ public class DB_GameSession
 
     public static Response addGameSession(GameSession _session)
     {
+        // make sure id is null, otherwise would be update
         _session.setId(null);
-        // save user
+        // save session
+        return HibernateUtil.addToDB(_session);
+    }
+
+
+    public static Response updateGameSession(GameSession _session)
+    {
+        // save session
         return HibernateUtil.addToDB(_session);
     }
 
