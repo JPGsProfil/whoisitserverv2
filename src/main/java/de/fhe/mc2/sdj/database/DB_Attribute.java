@@ -2,6 +2,7 @@ package de.fhe.mc2.sdj.database;
 
 import de.fhe.mc2.sdj.marshalling.ReturnString;
 import de.fhe.mc2.sdj.model.Attribute;
+import de.fhe.mc2.sdj.model.Card;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -78,6 +79,11 @@ public class DB_Attribute
     public static Response addAttribute(Attribute _attribute)
     {
         _attribute.setId(null);
+        // join cardset from JSON id, needed for hibernate sql
+        Card card = (Card) DB_Card.getCard(_attribute.getCardId()).getEntity();
+        System.out.println("Card name ermittelt "+card.getName());
+        _attribute.setCard(card);
+
         // prepare children if exist
         if(_attribute.getValue() != null)
         {
@@ -89,12 +95,17 @@ public class DB_Attribute
         return HibernateUtil.addToDB(_attribute);
     }
 
+    /*
     public static Response addAttributes(List<Attribute> _attributes)
     {
+
         // prepare children if exist
         for(int index = 0; index < _attributes.size(); index ++)
         {
             _attributes.get(index).setId(null);
+            Card card = (Card) DB_Card.getCard(_attributes.get(index).getCardId()).getEntity();
+            System.out.println("Card name ermittelt "+card.getName());
+            _attributes.get(index).setCard(card);
             if(_attributes.get(index).getValue() != null)
             {
                 // for cascade save: Value needs Attribute-obj for foreign key
@@ -104,5 +115,5 @@ public class DB_Attribute
             }
         }
         return HibernateUtil.addToDB(_attributes);
-    }
+    }*/
 }

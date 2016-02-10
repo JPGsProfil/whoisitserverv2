@@ -136,6 +136,7 @@ public class DB_User
         return Response.ok().build();
     }
 
+    /*
     private static User getUser(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -144,7 +145,7 @@ public class DB_User
         transaction.commit();
         User user = (User) userList.get(0);
         return user;
-    }
+    }*/
 
 
     private static boolean doesUserWithNameExist(String _name)
