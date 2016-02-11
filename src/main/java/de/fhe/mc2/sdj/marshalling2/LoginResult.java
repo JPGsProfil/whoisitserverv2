@@ -1,9 +1,10 @@
-package de.fhe.mc2.sdj.marshalling;
+package de.fhe.mc2.sdj.marshalling2;
 
 /**
  * Created by Jean on 02.02.2016.
  */
 /*
+// now user as return instead of LoginResult
 public class LoginResult
 {
     public String getResult()

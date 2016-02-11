@@ -84,35 +84,36 @@ public class Attribute
         this.card = card;
     }
 
-
-
-    public Attribute()
-    {
-
-    }
-
-
-    public Attribute( String name, Date updateDate)
-    {
-        this.id = null;
-        this.name = name;
-        this.updateDate = updateDate;
-    }
-
     public void setValue(Value value)
     {
         this.value = value;
     }
+
+
+
+    public Attribute()
+    {
+        this.id = null;
+        this.name = null;
+        this.cardId = null;
+        this.card = null;
+    }
+
+
+    public Attribute( String _name, Date _updateDate)
+    {
+        this.id = null;
+        this.name = _name;
+        this.updateDate = _updateDate;
+    }
+
+
 
     private Integer id;
     private String name;
     private Date updateDate;
     private Value value;
     private Integer cardId;
-
-
-
-
     private Card card;
 
 }

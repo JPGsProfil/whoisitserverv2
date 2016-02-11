@@ -31,7 +31,7 @@
 
 
         <!-- List of class mapping files, JPG: used for hibernate querys-->
-        <mapping class="de.fhe.mc2.sdj.marshalling.dbAPI"/>
+        <mapping class="de.fhe.mc2.sdj.marshalling2.dbAPI"/>
         <mapping class="de.fhe.mc2.sdj.model.User"/>
         <mapping class="de.fhe.mc2.sdj.model.Highscore"/>
         <mapping class="de.fhe.mc2.sdj.model.CardSet"/>

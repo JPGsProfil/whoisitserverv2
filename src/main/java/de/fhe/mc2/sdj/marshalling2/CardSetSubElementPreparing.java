@@ -1,11 +1,4 @@
-package de.fhe.mc2.sdj.marshalling;
-
-import de.fhe.mc2.sdj.model.Attribute;
-import de.fhe.mc2.sdj.model.Card;
-import de.fhe.mc2.sdj.model.CardSet;
-import de.fhe.mc2.sdj.model.Value;
-
-import java.util.List;
+package de.fhe.mc2.sdj.marshalling2;
 
 /**
  * Created by Jean on 09.02.2016.

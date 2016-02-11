@@ -16,7 +16,6 @@ public class Highscore implements java.io.Serializable
 {
 
 
-
     @Id
     @GeneratedValue
     @Column(name="ID", nullable=false)

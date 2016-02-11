@@ -3,6 +3,11 @@ package de.fhe.mc2.sdj.model;
 /**
  * Created by Jean on 11.12.2015.
  */
+
+/**
+ * old Object needed to map nm between value and card
+ * in current database One to many instead of many to many
+ */
 public class ValueToCard
 {
 
