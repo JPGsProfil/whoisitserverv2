@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.modelz;
+package de.fhe.mc2.sdj.model;
 
 import org.hibernate.annotations.*;
 

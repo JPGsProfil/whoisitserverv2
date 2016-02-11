@@ -1,16 +1,17 @@
-package de.fhe.mc2.sdj.modelz;
+package de.fhe.mc2.sdj.model;
+
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
- * contains the user and the highscore
+ * user profile for isit-game containing name, password, email ...
  */
 
-@Entity(name = "UserWithHighscore")
+
+
+@Entity
 @Table(name = "User")
-// needed for delete ...
-public class UserWithHighscore
+public class User
 {
 
     @Id
@@ -44,14 +45,6 @@ public class UserWithHighscore
     }
 
 
-    @OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //@PrimaryKeyJoinColumn
-    public List<Highscore> getHighscore()
-    {
-        return highscore;
-    }
-
-
 
     public void setID(Integer _id)
     {
@@ -76,11 +69,6 @@ public class UserWithHighscore
         password = _password;
     }
 
-    public void setHighscore(List<Highscore> highscore)
-    {
-        this.highscore = highscore;
-    }
-
 
     /*
     @OneToMany(mappedBy="user",fetch = FetchType.EAGER, cascade={CascadeType.ALL})
@@ -101,7 +89,7 @@ public class UserWithHighscore
     }*/
 
 
-    public UserWithHighscore()
+    public User()
     {
         id = null;
         name = null;
@@ -109,7 +97,7 @@ public class UserWithHighscore
         email = null;
     }
 
-    public UserWithHighscore(Integer _userId)
+    public User(Integer _userId)
     {
         id = _userId;
         name = null;
@@ -117,7 +105,7 @@ public class UserWithHighscore
         email = null;
     }
 
-    public UserWithHighscore(String _email, String _name, String _password)
+    public User(String _email, String _name, String _password)
     {
         //this.id     = _id;
         email       = _email;
@@ -131,6 +119,5 @@ public class UserWithHighscore
     private String email;
     private String name;
     private String password;
-    private List<Highscore> highscore;
 
 }

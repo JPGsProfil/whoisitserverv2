@@ -1,7 +1,7 @@
 package de.fhe.mc2.sdj.database;
 
-import de.fhe.mc2.sdj.modelz.Attribute;
-import de.fhe.mc2.sdj.modelz.CardSet;
+import de.fhe.mc2.sdj.model.Attribute;
+import de.fhe.mc2.sdj.model.CardSet;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

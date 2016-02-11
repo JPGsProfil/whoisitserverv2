@@ -32,12 +32,12 @@
 
         <!-- List of class mapping files, JPG: used for hibernate querys-->
         <mapping class="de.fhe.mc2.sdj.marshalling.dbAPI"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.User"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.Highscore"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.CardSet"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.Card"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.Attribute"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.Value"/>
-        <mapping class="de.fhe.mc2.sdj.modelz.GameSession"/>
+        <mapping class="de.fhe.mc2.sdj.model.User"/>
+        <mapping class="de.fhe.mc2.sdj.model.Highscore"/>
+        <mapping class="de.fhe.mc2.sdj.model.CardSet"/>
+        <mapping class="de.fhe.mc2.sdj.model.Card"/>
+        <mapping class="de.fhe.mc2.sdj.model.Attribute"/>
+        <mapping class="de.fhe.mc2.sdj.model.Value"/>
+        <mapping class="de.fhe.mc2.sdj.model.GameSession"/>
     </session-factory>
 </hibernate-configuration>

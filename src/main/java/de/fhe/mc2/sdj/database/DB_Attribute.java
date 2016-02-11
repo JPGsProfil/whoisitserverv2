@@ -1,8 +1,8 @@
 package de.fhe.mc2.sdj.database;
 
 import de.fhe.mc2.sdj.marshalling.ReturnString;
-import de.fhe.mc2.sdj.modelz.Attribute;
-import de.fhe.mc2.sdj.modelz.Card;
+import de.fhe.mc2.sdj.model.Attribute;
+import de.fhe.mc2.sdj.model.Card;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -95,7 +95,7 @@ public class DB_Attribute
 
     /**
      * add an attribute to the database
-     * @param _attribute Attribute object (from modelz package) wich should be added
+     * @param _attribute Attribute object (from model package) wich should be added
      * @return Response with 200 if successful
      */
     public static Response addAttribute(Attribute _attribute)

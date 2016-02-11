@@ -1,7 +1,7 @@
 package de.fhe.mc2.sdj.marshalling;
 
 import de.fhe.mc2.sdj.database.*;
-import de.fhe.mc2.sdj.modelz.*;
+import de.fhe.mc2.sdj.model.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
