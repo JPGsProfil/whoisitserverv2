@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import org.hibernate.annotations.*;
 
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
- * Created by Jean on 11.12.2015.
+ * a cardset contains all cards which belong together to play a game with a specific topic
  */
 @Entity
 //@SequenceGenerator(name="ID", initialValue = 1, allocationSize = 1)

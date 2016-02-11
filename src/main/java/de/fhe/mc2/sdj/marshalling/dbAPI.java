@@ -1,14 +1,15 @@
 package de.fhe.mc2.sdj.marshalling;
 
 import de.fhe.mc2.sdj.database.*;
-import de.fhe.mc2.sdj.model.*;
+import de.fhe.mc2.sdj.modelz.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Created by Jean on 11.01.2016.
+ * interface for connection between android and Tomcat-server
+ * all url and function are mapped here
  */
 @Path("/db")
 public class dbAPI

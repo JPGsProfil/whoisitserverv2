@@ -1,7 +1,7 @@
 package de.fhe.mc2.sdj.marshalling;
 
 /**
- * Created by Jean on 04.02.2016.
+ * Return object containing a string instead of a simple string to search through JSON on Android-client
  */
 public class ReturnString
 {

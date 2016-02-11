@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 /**
  * Created by Jean on 11.12.2015.

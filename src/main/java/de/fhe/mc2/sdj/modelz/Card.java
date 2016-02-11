@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by Jean on 11.12.2015.
+ * a card represents a person in the isit-game
  */
 
 @Entity

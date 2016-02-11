@@ -51,7 +51,7 @@ public class HibernateUtil
 
     /**
      * outsourced function to add an object to the database
-     * @param _obj Object of database-entity (one of the model package)
+     * @param _obj Object of database-entity (one of the modelz package)
      * @return Response with 200 if succesful, else 304 not modified
      */
     public static Response addToDB(Object _obj)
@@ -125,7 +125,7 @@ public class HibernateUtil
 
     /**
      * outsourced function to delete a database entry by given object
-     * @param _object given object wich should be deleted (from model package)
+     * @param _object given object wich should be deleted (from modelz package)
      * @return Response with 200 if ok, else not modified
      */
     public static Response deleteObj(Object _object)
@@ -158,7 +158,7 @@ public class HibernateUtil
 
     /**
      * old function to delete a database entry be id
-     * @param type Entity Type (model)
+     * @param type Entity Type (modelz)
      * @param id id of the Object as Integer
      * @return Response with ok if successful, else not modified
      */

@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import javax.persistence.*;
 
@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
- * Created by Jean on 08.01.2016.
+ * Highscore of a specific user
+ * shows statistic about player
+ * later highscore per user and set
  */
 //@Embeddable
 //@Table(name="Highscore")

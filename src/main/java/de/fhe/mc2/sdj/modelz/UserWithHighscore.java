@@ -1,10 +1,10 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by Jean on 08.02.2016.
+ * contains the user and the highscore
  */
 
 @Entity(name = "UserWithHighscore")

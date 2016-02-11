@@ -1,11 +1,12 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
 /**
- * Created by Jean on 11.12.2015.
+ * value belongs to an attribute
+ * extra class (instead of part of attribute) because android-side-search-function
  */
 @Entity
 @Table(name = "Value")

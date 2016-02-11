@@ -1,9 +1,10 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import javax.persistence.*;
 
 /**
- * Created by Jean on 11.12.2015.
+ * represents the server-lobby
+ * Android client can check if there are player waiting ...
  */
 @Entity
 @Table(name = "Session")

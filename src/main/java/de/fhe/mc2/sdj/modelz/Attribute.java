@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.model;
+package de.fhe.mc2.sdj.modelz;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Jean on 11.12.2015.
+ * modelz of the attribute
+ * attributes are part of a card
  */
 @Entity
 @Table(name = "Attribute")

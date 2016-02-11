@@ -7,8 +7,8 @@
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="E:/Seafile/FH/MA/Semester 3/MC2/Javadoc Server/noPrivate" />
-    <option name="OPTION_SCOPE" value="protected" />
+    <option name="OUTPUT_DIRECTORY" value="E:/Seafile/FH/MA/Semester 3/MC2/Javadoc Server/withPrivate" />
+    <option name="OPTION_SCOPE" value="private" />
     <option name="OPTION_HIERARCHY" value="true" />
     <option name="OPTION_NAVIGATOR" value="true" />
     <option name="OPTION_INDEX" value="true" />

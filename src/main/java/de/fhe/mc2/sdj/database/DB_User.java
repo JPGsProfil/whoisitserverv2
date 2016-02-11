@@ -1,9 +1,9 @@
 package de.fhe.mc2.sdj.database;
 
 import de.fhe.mc2.sdj.marshalling.Login;
-import de.fhe.mc2.sdj.model.Highscore;
-import de.fhe.mc2.sdj.model.User;
-import de.fhe.mc2.sdj.model.UserWithHighscore;
+import de.fhe.mc2.sdj.modelz.Highscore;
+import de.fhe.mc2.sdj.modelz.User;
+import de.fhe.mc2.sdj.modelz.UserWithHighscore;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
