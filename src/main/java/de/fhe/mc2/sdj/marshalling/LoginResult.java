@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.marshallingz;
+package de.fhe.mc2.sdj.marshalling;
 
 /**
  * Created by Jean on 02.02.2016.

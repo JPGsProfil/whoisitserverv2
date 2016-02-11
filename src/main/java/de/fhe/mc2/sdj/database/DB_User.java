@@ -1,6 +1,6 @@
 package de.fhe.mc2.sdj.database;
 
-import de.fhe.mc2.sdj.marshallingz.Login;
+import de.fhe.mc2.sdj.marshalling.Login;
 import de.fhe.mc2.sdj.model.Highscore;
 import de.fhe.mc2.sdj.model.User;
 import de.fhe.mc2.sdj.model.UserWithHighscore;
