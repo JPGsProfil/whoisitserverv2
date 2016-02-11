@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Created by Jean on 03.02.2016.
+ * Connection between GameSession-Model and database
  */
 public class DB_GameSession
 {

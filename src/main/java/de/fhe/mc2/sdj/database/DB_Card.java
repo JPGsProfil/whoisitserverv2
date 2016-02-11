@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Created by Jean on 28.01.2016.
+ * Connection between Card-Model and database
  */
 public class DB_Card
 {

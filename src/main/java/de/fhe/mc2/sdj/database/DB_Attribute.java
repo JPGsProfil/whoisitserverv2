@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Jean on 03.02.2016.
+ * Connection between Attribute-Model and database
  */
 
 /**

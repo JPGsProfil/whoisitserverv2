@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 /**
- * Created by Jean on 08.02.2016.
+ * Connection between Highscore-Model and database
  */
 public class DB_Highscore
 {

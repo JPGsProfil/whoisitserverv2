@@ -17,7 +17,10 @@ import javax.ws.rs.core.Response;
 import java.io.Serializable;
 import java.util.List;
 
-
+/**
+ * helper-class for Hibernate
+ * creates a SessionFactory-object which in turn can open up new Session's
+ */
 public class HibernateUtil
 {
     private static SessionFactory sessionFactory;

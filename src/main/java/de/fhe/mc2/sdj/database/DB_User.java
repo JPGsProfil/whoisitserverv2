@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Created by Jean on 11.01.2016.
+ * Connection between User-Model and database
  */
 public class DB_User
 {
