@@ -1,6 +1,6 @@
 package de.fhe.mc2.sdj;
 
-import de.fhe.mc2.sdj.marshalling2.dbAPI;
+import de.fhe.mc2.sdj.marshallingz.dbAPI;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

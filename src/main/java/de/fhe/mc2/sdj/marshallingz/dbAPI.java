@@ -1,4 +1,4 @@
-package de.fhe.mc2.sdj.marshalling2;
+package de.fhe.mc2.sdj.marshallingz;
 
 import de.fhe.mc2.sdj.database.*;
 import de.fhe.mc2.sdj.model.*;

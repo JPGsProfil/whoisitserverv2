@@ -1,6 +1,6 @@
 package de.fhe.mc2.sdj.database;
 
-import de.fhe.mc2.sdj.marshalling2.ReturnString;
+import de.fhe.mc2.sdj.marshallingz.ReturnString;
 import de.fhe.mc2.sdj.model.Attribute;
 import de.fhe.mc2.sdj.model.Card;
 import org.hibernate.Session;

@@ -1,6 +1,6 @@
 package de.fhe.mc2.sdj.database;
 
-import de.fhe.mc2.sdj.marshalling2.ReturnBool;
+import de.fhe.mc2.sdj.marshallingz.ReturnBool;
 import de.fhe.mc2.sdj.model.GameSession;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
