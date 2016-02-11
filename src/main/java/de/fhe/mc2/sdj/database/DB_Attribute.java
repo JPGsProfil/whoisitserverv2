@@ -19,6 +19,11 @@ import java.util.List;
  */
 public class DB_Attribute
 {
+    /**
+     * get a single attribute by it's id
+     * @param _id id of the given Attribute as Integer
+     * @return Response with Attribute-obj
+     */
     public static Response getAttributeById(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -95,25 +100,4 @@ public class DB_Attribute
         return HibernateUtil.addToDB(_attribute);
     }
 
-    /*
-    public static Response addAttributes(List<Attribute> _attributes)
-    {
-
-        // prepare children if exist
-        for(int index = 0; index < _attributes.size(); index ++)
-        {
-            _attributes.get(index).setId(null);
-            Card card = (Card) DB_Card.getCard(_attributes.get(index).getCardId()).getEntity();
-            System.out.println("Card name ermittelt "+card.getName());
-            _attributes.get(index).setCard(card);
-            if(_attributes.get(index).getValue() != null)
-            {
-                // for cascade save: Value needs Attribute-obj for foreign key
-                _attributes.get(index).getValue().setAttribute(_attributes.get(index));
-                // set id value primary key null (if android makes a mistake, otherwise causes update instead of insert
-                _attributes.get(index).getValue().setId(null);
-            }
-        }
-        return HibernateUtil.addToDB(_attributes);
-    }*/
 }

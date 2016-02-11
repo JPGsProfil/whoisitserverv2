@@ -14,6 +14,12 @@ import java.util.List;
  */
 public class DB_Card
 {
+    /**
+     * internal db-function
+     * get a single card by it's id
+     * @param _id card id as Integer
+     * @return Response with card-object
+     */
     public static Response getCard(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -34,9 +40,10 @@ public class DB_Card
 
 
     /**
-     * List of Cards
-     * @param _cardSetId
-     * @return
+     * internal db-function
+     * get List of cards by given cardSetId
+     * @param _cardSetId id of the cardSet as Integer
+     * @return Response with list of cards
      */
     public static Response getCards(Integer _cardSetId)
     {
@@ -53,9 +60,10 @@ public class DB_Card
 
 
     /**
+     * internal db-function
      * add a single card to the database
-     * @param _card
-     * @return
+     * @param _card Card-object wich should be added
+     * @return Response with 200 if ok
      */
     public static Response addCard(Card _card)
     {
@@ -103,16 +111,6 @@ public class DB_Card
         return currentResponse;
     }*/
 
-
-    /*
-    public static Response addCardsV2(List<Card> _cards)
-    {
-        for(int index = 0; index < _cards.size(); index ++)
-        {
-            _cards.get(index).setId(null);
-        }
-        return HibernateUtil.addToDB(_cards);
-    }*/
 
 
 }

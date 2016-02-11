@@ -17,6 +17,12 @@ import java.util.List;
  */
 public class DB_GameSession
 {
+    /**
+     * internal db-function
+     * get a GameSession by it's id
+     * @param _id id of the gameSession as Integer
+     * @return Response with GameSession if available
+     */
     public static Response getSessionById(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -36,6 +42,11 @@ public class DB_GameSession
     }
 
 
+    /**
+     * add the given gameSession to the database
+     * @param _session Gamesession object
+     * @return Response with ok if successful
+     */
     public static Response addGameSession(GameSession _session)
     {
         // make sure id is null, otherwise would be update
@@ -45,6 +56,13 @@ public class DB_GameSession
     }
 
 
+    /**
+     * internal db-function
+     * Change values of a specific gameSession
+     * can be used to add a user or change date or state
+     * @param _session GameSession object wich should be changed
+     * @return Response with 200 if successful
+     */
     public static Response updateGameSession(GameSession _session)
     {
         // save session
@@ -52,8 +70,12 @@ public class DB_GameSession
     }
 
 
-
-
+    /**
+     * internal db-function
+     * find out whether user is already in a session
+     * @param _userId id of the user wich will be checked
+     * @return Response with returnbool true if true, else false
+     */
     public static Response isUserInSession(Integer _userId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -77,6 +99,12 @@ public class DB_GameSession
         }
     }
 
+    /**
+     * internal db-function
+     * get all sessions with one user
+     * needed if looking for sessions with one user
+     * @return Response with list of sessions
+     */
     public static Response getSessionsWithOneUser()
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

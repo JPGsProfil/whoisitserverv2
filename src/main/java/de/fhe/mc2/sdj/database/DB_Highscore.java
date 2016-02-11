@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class DB_Highscore
 {
+    /**
+     * internal db-function
+     * get a specific highscore by highscore id
+     * not needed because user has a highscore
+     * @param _id highscore id as Integer
+     * @return
+     */
     public static Highscore getScoresById(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

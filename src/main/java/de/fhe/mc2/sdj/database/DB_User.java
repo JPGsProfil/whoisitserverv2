@@ -20,6 +20,12 @@ public class DB_User
 {
 
 
+    /**
+     * internal db-function
+     * get a user by userid
+     * @param _id userid
+     * @return Response with user if available
+     */
     public static Response getUserV2(Integer _id)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -30,11 +36,23 @@ public class DB_User
         return Response.ok().entity(user).build();
     }
 
+    /**
+     * delete user if possible
+     * @param _user specific user object, contains highscore
+     * @return Response message
+     */
     public static Response deleteUser(UserWithHighscore _user)
     {
         return  HibernateUtil.deleteObj(_user);
     }
 
+
+    /**
+     * internal db-function
+     * check of user password combination exist
+     * @param _login object with String username and String password
+     * @return Response with user if available
+     */
     public static Response doesUserWithNameAndPasswordExist(Login _login)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -55,16 +73,15 @@ public class DB_User
             return Response.ok().entity(user).build();
         }
     }
-    /*
-    public static User GetUserV2(Integer _id)
-    {
-        String query = "from User U where U.id is "+_id;
-        List list = HibernateUtil.DBTransaction(query);
-        User user = (User) list.get(0);
-        return user;
-    }*/
 
 
+    /**
+     * internal db-function
+     * add a single user to the database
+     * add highscore for new user
+     * @param _user user object with name, password, email ...
+     * @return response message 200 if ok, else 304
+     */
     public static Response addUser(User _user)
     {
         _user.setID(null);
@@ -89,35 +106,13 @@ public class DB_User
             }
             return response;
         }
-
-
-
-
-
-        /*
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction currentTransaction = null;
-        try
-        {
-            currentTransaction = session.beginTransaction();
-            session.save(_user);
-            currentTransaction.commit();
-        }
-        catch (HibernateException e)
-        {
-            if (currentTransaction!=null) currentTransaction.rollback();
-            e.printStackTrace();
-            return Response.notModified().build();
-        }
-        finally
-        {
-            session.close();
-        }
-
-        return Response.ok().build();*/
     }
 
 
+    /**
+     * internal function to test adding a user without android client
+     * @return Response with 200 if seccessful
+     */
     public static Response testwrite2()
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -136,18 +131,14 @@ public class DB_User
         return Response.ok().build();
     }
 
-    /*
-    private static User getUser(Integer _id)
-    {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction transaction  = session.beginTransaction();
-        List userList = session.createQuery( "from User U where U.id is "+_id ).list();
-        transaction.commit();
-        User user = (User) userList.get(0);
-        return user;
-    }*/
 
-
+    /**
+     * internal function
+     * check if there is still a user with given name, has to be unique
+     * used for addUser
+     * @param _name String name of the user
+     * @return true if exist, else false
+     */
     private static boolean doesUserWithNameExist(String _name)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -166,9 +157,5 @@ public class DB_User
             return true;
         }
     }
-
-
-
-
 
 }
