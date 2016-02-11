@@ -11,9 +11,16 @@ import java.util.Set;
  * Created by Jean on 01.12.2015.
  */
 
+/**
+ * Defines the components of a JAX-RS application and supplies additional metadata.
+ */
 @ApplicationPath("api")
 public class ApplicationConfig extends Application
 {
+    /**
+     * Jax-RS component
+     * @return api-class
+     */
     @Override
     public Set<Class<?>> getClasses()
     {

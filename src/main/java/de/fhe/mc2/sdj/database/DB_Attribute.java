@@ -42,6 +42,11 @@ public class DB_Attribute
         }
     }
 
+    /**
+     * get all attributs which belong to given cardset
+     * @param _cardSetId id of the cardset as Integer
+     * @return Response with list of cardsets
+     */
     public static Response getAttributesByCardSetId(Integer _cardSetId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -64,6 +69,13 @@ public class DB_Attribute
         }
     }
 
+
+    /**
+     * get Attributs and Values of a cardset
+     * used to build question on android client
+     * @param _cardSetId id of the cardset as Integer
+     * @return Response with list of attributes and value
+     */
     public static Response getAttributesAndValuesByCardSetId(Integer _cardSetId)
     {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -81,6 +93,11 @@ public class DB_Attribute
     }
 
 
+    /**
+     * add an attribute to the database
+     * @param _attribute Attribute object (from model package) wich should be added
+     * @return Response with 200 if successful
+     */
     public static Response addAttribute(Attribute _attribute)
     {
         _attribute.setId(null);
