@@ -435,6 +435,23 @@ public class dbAPI
 
 
 
+    // Score
+
+    /**
+     * get score for given user-id
+     * last tested 09.02.16
+     * @statuscode 200 score for given id if available
+     * @statuscode 204 no score for given id
+     * @param _id id (primary key) of the score
+     * @return Response with list of scores
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "score/user/{id}" )
+    public Response getScoreByUserId(@PathParam("id") Integer _id)
+    {
+        return DB_Highscore.getScoresByUserId(_id);
+    }
 
 
 
