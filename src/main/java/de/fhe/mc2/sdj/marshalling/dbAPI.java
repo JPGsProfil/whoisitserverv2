@@ -453,6 +453,14 @@ public class dbAPI
         return DB_Highscore.getScoresByUserId(_id);
     }
 
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "score" )
+    public Response updateScore(Highscore _highscore)
+    {
+        return DB_Highscore.updateScore(_highscore);
+    }
+
 
 
 

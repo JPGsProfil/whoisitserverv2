@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.ws.rs.core.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -94,16 +95,25 @@ public class DB_User
         else
         {
             // save user
-            Response response = HibernateUtil.addToDB(_user);
-            // save highscore -> user is needed for highscore
-            if(
-                    response.getStatus() == Response.Status.CREATED.getStatusCode()
-                    || response.getStatus() == Response.Status.OK.getStatusCode()
-              )
+            if(_user.getHighscores() != null)
             {
-                Highscore score = new Highscore(_user);
-                response = HibernateUtil.addToDB(score);
+                for(int index = 0; index < _user.getHighscores().size(); index ++)
+                {
+                    _user.getHighscores().get(index).setId(null);
+                    _user.getHighscores().get(index).setUser(_user);
+                }
             }
+            else
+            {
+                // add standard highscore entry to database if no specific in JSON
+                Highscore highscore = new Highscore();
+                highscore.setUser(_user);
+                List<Highscore> highscores = new ArrayList<>();
+                highscores.add(highscore);
+                _user.setHighscores(highscores);
+            }
+            
+            Response response = HibernateUtil.addToDB(_user);
             return response;
         }
     }

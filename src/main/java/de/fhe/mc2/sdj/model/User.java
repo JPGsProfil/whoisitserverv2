@@ -2,6 +2,7 @@ package de.fhe.mc2.sdj.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * user profile for isit-game containing name, password, email ...
@@ -45,6 +46,12 @@ public class User
     }
 
 
+    @OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public List<Highscore> getHighscores()
+    {
+        return highscores;
+    }
+
 
     public void setID(Integer _id)
     {
@@ -67,6 +74,11 @@ public class User
     public void setPassword(String _password)
     {
         password = _password;
+    }
+
+    public void setHighscores(List<Highscore> highscores)
+    {
+        this.highscores = highscores;
     }
 
 
@@ -119,5 +131,6 @@ public class User
     private String email;
     private String name;
     private String password;
+    private List<Highscore> highscores;
 
 }

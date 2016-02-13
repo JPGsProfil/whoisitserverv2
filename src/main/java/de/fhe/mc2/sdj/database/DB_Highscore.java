@@ -50,4 +50,10 @@ public class DB_Highscore
             return Response.ok().entity(scoreList).build();
         }
     }
+
+    public static Response updateScore(Highscore _highscore)
+    {
+        Response response = HibernateUtil.addToDB(_highscore);
+        return response;
+    }
 }
