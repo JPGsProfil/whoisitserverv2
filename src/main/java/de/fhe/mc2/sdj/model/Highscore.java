@@ -3,7 +3,6 @@ package de.fhe.mc2.sdj.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.hibernate.annotations.DynamicUpdate;
 
 
 /**
@@ -15,7 +14,6 @@ import org.hibernate.annotations.DynamicUpdate;
 //@Table(name="Highscore")
 @Entity
 @Table(name="Highscore")
-@DynamicUpdate(value = true)
 public class Highscore implements java.io.Serializable
 {
 
