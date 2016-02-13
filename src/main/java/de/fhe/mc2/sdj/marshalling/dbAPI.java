@@ -55,6 +55,29 @@ public class dbAPI
         //return Response.created().build();
     }
 
+
+
+    /**
+     * change values of user
+     * prove if name already exist
+     * last tested 08.02.16
+     * @statuscode 200 user added
+     * @statuscode 204 user not changed, database not modified
+     * @statuscode 409 user already exist
+     * @param _user user which should be changed on database
+     * @return Response with 200 if successful, else 204 or 409
+     */
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path( "user" )
+    public Response updateUser( User _user)
+    {
+        System.out.println("Name: " + _user.getName());
+        return DB_User.updateUser(_user);
+        //return Response.created().build();
+    }
+
     /**
      * not working with user. if needed user on andrdoid should be changed like UserWithHighscore
      * OR adding userId to highscore (already in highscore comments)

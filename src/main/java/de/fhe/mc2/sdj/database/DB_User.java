@@ -120,6 +120,34 @@ public class DB_User
 
 
     /**
+     * updates a single user on database
+     * @param _user user to be changed
+     * @return Response 200 if ok, else not modified
+     */
+    public static Response updateUser(User _user)
+    {
+        Response oldUserResponse = getUserV2(_user.getID());
+        User oldUser = (User) oldUserResponse.getEntity();
+        if(oldUser.getName().equals(_user.getName()))
+        {
+            return HibernateUtil.updateOnDB(_user);
+        }
+        else
+        {
+            if(doesUserWithNameExist(_user.getName()))
+            {
+                // same name exist, not allowed
+                return Response.status(Response.Status.CONFLICT).build();
+            }
+            else
+            {
+                return HibernateUtil.updateOnDB(_user);
+            }
+        }
+    }
+
+
+    /**
      * internal function to test adding a user without android client
      * @return Response with 200 if seccessful
      */
