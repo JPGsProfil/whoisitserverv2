@@ -53,7 +53,7 @@ public class DB_Highscore
 
     public static Response updateScore(Highscore _highscore)
     {
-        Response response = HibernateUtil.addToDB(_highscore);
+        Response response = HibernateUtil.updateOnDB(_highscore);
         return response;
     }
 }

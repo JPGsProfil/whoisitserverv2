@@ -81,6 +81,33 @@ public class HibernateUtil
     }
 
 
+    public static Response updateOnDB(Object _obj)
+    {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction currentTransaction = null;
+        try
+        {
+            currentTransaction = session.beginTransaction();
+            session.update(_obj);
+            currentTransaction.commit();
+        }
+        catch (HibernateException e)
+        {
+            //TransactionStatus transactionStatus = currentTransaction.getStatus();
+            if (currentTransaction!=null) currentTransaction.rollback();
+            e.printStackTrace();
+            return Response.notModified().build();
+        }
+        finally
+        {
+            session.close();
+        }
+
+        return Response.ok().build();
+    }
+
+
     /**
      * create a new session factory at the beginning
      * map the config from hibernate.cfg.xml
