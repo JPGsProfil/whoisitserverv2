@@ -53,7 +53,28 @@ public class DB_Highscore
 
     public static Response updateScore(Highscore _highscore)
     {
-        Response response = HibernateUtil.updateOnDB(_highscore);
-        return response;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction  = session.beginTransaction();
+
+        String hqlUpdate = "update Highscore h set h.matchesWon = :matchesWon, h.matchesLost = :matchesLost where h.id = :id";
+// or String hqlUpdate = "update Customer set name = :newName where name = :oldName";
+        int updatedEntities = session.createQuery( hqlUpdate )
+                .setInteger( "matchesWon",  _highscore.getMatchesWon())
+                .setInteger( "matchesLost", _highscore.getMatchesLost() )
+                .setInteger( "id", _highscore.getId() )
+                .executeUpdate();
+        transaction.commit();
+        if(session.isOpen())
+        {
+            session.close();
+        }
+        if(updatedEntities > 0)
+        {
+            return Response.ok().build();
+        }
+        else
+        {
+            return Response.notModified().build();
+        }
     }
 }
